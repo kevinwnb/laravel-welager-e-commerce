@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductDetailsCollection extends Migration
+class CreateProductSummariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateProductDetailsCollection extends Migration
      */
     public function up()
     {
-        // Schema::connection('mongodb')->drop('product_details');
-        // Schema::connection('mongodb')->create('product_details', function ($collection) {
-        //     //
-        // });
+        Schema::create('product_summaries', function (Blueprint $table) {
+            $table->id();
+            $table->text('summary');
+            $table->foreignId('product_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +28,6 @@ class CreateProductDetailsCollection extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('product_summaries');
     }
 }

@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\Image;
 use App\Http\Resources\Product as ProductResource;
 use App\Models\ProductDetail;
+use App\Models\ProductProperty;
+use App\Models\ProductSummary;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -124,8 +126,12 @@ class ProductController extends Controller
         $images = Image::where('product_id', '=', $id)->get();
         $product['images'] = $images;
         //ProductDetail::on("mongodb")->create(['id' => 2, 'brand' => 'bla']);
-        $product_details = ProductDetail::on("mongodb")->where('id', $id)->first();
+        $product_details = ProductDetail::where('product_id', $id)->get();
+        $product_summary = ProductSummary::where('product_id', $id)->get();
+        $product_properties = ProductProperty::where('product_id', $id)->get();
         $product['details'] = $product_details;
+        $product['summary'] = $product_summary;
+        $product['properties'] = $product_properties;
         $product['reviews'] = Review::where('product_id', $id)->get();
         return view('product')->with(['product' => json_encode($product), 'ship_to' => Auth::check() ? json_encode(User::where('id', Auth::id())->first()) : json_encode(['results' => 0])]);
     }

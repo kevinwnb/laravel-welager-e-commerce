@@ -42594,13 +42594,13 @@ var render = function() {
             _vm._v(" "),
             _c(
               "ul",
-              _vm._l(_vm.product.details.description, function(item, index) {
+              _vm._l(_vm.product.details, function(item, index) {
                 return _c(
                   "li",
                   { key: item.title + index, staticClass: "mt-3" },
                   [
                     _c("b", [_vm._v(_vm._s(item.title) + ": ")]),
-                    _vm._v(_vm._s(item.text) + "\n          ")
+                    _vm._v(_vm._s(item.description) + "\n          ")
                   ]
                 )
               }),
@@ -42611,9 +42611,11 @@ var render = function() {
             _vm._v(" "),
             _c(
               "ul",
-              _vm._l(_vm.product.details.summary_list, function(item, index) {
+              _vm._l(_vm.product.summary, function(item, index) {
                 return _c("li", { key: index }, [
-                  _vm._v("\n            " + _vm._s(item) + "\n          ")
+                  _vm._v(
+                    "\n            " + _vm._s(item.summary) + "\n          "
+                  )
                 ])
               }),
               0
@@ -42626,17 +42628,13 @@ var render = function() {
             _c("table", { staticClass: "table table-bordered" }, [
               _c(
                 "tbody",
-                _vm._l(_vm.product.details.properties, function(
-                  value,
-                  name,
-                  index
-                ) {
+                _vm._l(_vm.product.properties, function(item, index) {
                   return _c("tr", { key: index }, [
                     _c("td", { staticClass: "bg-light font-weight-bold" }, [
-                      _vm._v(_vm._s(name))
+                      _vm._v(_vm._s(item.title))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(value))])
+                    _c("td", [_vm._v(_vm._s(item.description))])
                   ])
                 }),
                 0

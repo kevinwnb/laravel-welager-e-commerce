@@ -48,29 +48,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        //mongodb
-        ProductDetail::on('mongodb')->insert([
-            'id' => 1,
-            'description' => [
-                ['title' => 'Best connectivity', 'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                ['title' => 'Long battery life', 'text' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
-                ['title' => 'Crystal clear sound', 'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
-                ['title' => 'Bluetooth 4.1', 'text' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
-            ],
-            'summary_list' => [
-                'Lorem ipsum 5%',
-                'dolor 3 sit amet',
-                'Amet consectetur adipiscing',
-                '7 sed do eiusmod tempor incididunt',
-                '3ghz'
-            ],
-            'properties' => [
-                'Color' => 'Black',
-                'Batteries' => '1 Lithium Polymer battery required. (included)',
-                'Dimensions' => '7.5cm x 4cm x 2cm'
-            ]
-        ]);
-
         //carts
         DB::table('carts')->insert([
             'user_id' => 1
@@ -285,6 +262,86 @@ class DatabaseSeeder extends Seeder
             'price' => 7.99,
             'keywords' => 'pants jeans',
             'category_id' => 8,
+        ]);
+
+        //mongodb
+        // ProductDetail::on('mongodb')->insert([
+        //     'id' => 1,
+        //     'description' => [
+        //         ['title' => 'Best connectivity', 'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
+        //         ['title' => 'Long battery life', 'text' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
+        //         ['title' => 'Crystal clear sound', 'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'],
+        //         ['title' => 'Bluetooth 4.1', 'text' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'],
+        //     ],
+        //     'summary_list' => [
+        //         'Lorem ipsum 5%',
+        //         'dolor 3 sit amet',
+        //         'Amet consectetur adipiscing',
+        //         '7 sed do eiusmod tempor incididunt',
+        //         '3ghz'
+        //     ],
+        //     'properties' => [
+        //         'Color' => 'Black',
+        //         'Batteries' => '1 Lithium Polymer battery required. (included)',
+        //         'Dimensions' => '7.5cm x 4cm x 2cm'
+        //     ]
+        // ]);
+
+        //product details
+        DB::table('product_details')->insert([
+            'title' => 'Best connectivity',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'product_id' => 1
+        ]);
+        DB::table('product_details')->insert([
+            'title' => 'Long battery life',
+            'description' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'product_id' => 1
+        ]);
+        DB::table('product_details')->insert([
+            'title' => 'Crystal clear sound',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'product_id' => 1
+        ]);
+        DB::table('product_details')->insert([
+            'title' => 'Bluetooth 4.1',
+            'description' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'product_id' => 1
+        ]);
+
+        //product summary
+        DB::table('product_summaries')->insert([
+            'summary' => 'Lorem ipsum 5%',
+            'product_id' => 1
+        ]);
+        DB::table('product_summaries')->insert([
+            'summary' => 'dolor 3 sit amet',
+            'product_id' => 1
+        ]);
+        DB::table('product_summaries')->insert([
+            'summary' => 'Amet consectetur adipiscing',
+            'product_id' => 1
+        ]);
+        DB::table('product_summaries')->insert([
+            'summary' => '7 sed do eiusmod tempor incididunt',
+            'product_id' => 1
+        ]);
+
+        //product properties
+        DB::table('product_properties')->insert([
+            'title' => 'Color',
+            'description' => 'Black',
+            'product_id' => 1
+        ]);
+        DB::table('product_properties')->insert([
+            'title' => 'Batteries',
+            'description' => '1 Lithium Polymer battery required. (included)',
+            'product_id' => 1
+        ]);
+        DB::table('product_properties')->insert([
+            'title' => 'Dimensions',
+            'description' => '7.5cm x 4cm x 2cm',
+            'product_id' => 1
         ]);
 
         //images

@@ -218,20 +218,20 @@
           <ul>
             <li
               class="mt-3"
-              v-for="(item, index) in product.details.description"
+              v-for="(item, index) in product.details"
               :key="item.title + index"
             >
-              <b>{{ item.title }}: </b>{{ item.text }}
+              <b>{{ item.title }}: </b>{{ item.description }}
             </li>
           </ul>
 
           <h5 class="mt-5">About this item</h5>
           <ul>
             <li
-              v-for="(item, index) in product.details.summary_list"
+              v-for="(item, index) in product.summary"
               :key="index"
             >
-              {{ item }}
+              {{ item.summary }}
             </li>
           </ul>
 
@@ -239,11 +239,11 @@
           <table class="table table-bordered">
             <tbody>
               <tr
-                v-for="(value, name, index) in product.details.properties"
+                v-for="(item, index) in product.properties"
                 :key="index"
               >
-                <td class="bg-light font-weight-bold">{{ name }}</td>
-                <td>{{ value }}</td>
+                <td class="bg-light font-weight-bold">{{ item.title }}</td>
+                <td>{{ item.description }}</td>
               </tr>
             </tbody>
           </table>
