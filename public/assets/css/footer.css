@@ -1,0 +1,8 @@
+.footerLinks {
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.2s;
+}
+
+.footerLinks:hover {
+    color: rgba(255, 255, 255, 0.7);
+}

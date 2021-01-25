@@ -1,0 +1,113 @@
+@import "sidenav.css";
+@import "absoluter.css";
+@import "footer.css";
+
+
+
+[v-cloak] {
+    display: none;
+}
+
+
+
+.subnav {
+    background-color: #1f2326;
+    padding: 5px 16px 5px 16px;
+}
+
+.subnav a {
+    color: white;
+}
+
+
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    color: white;
+    font-size: 1.5em;
+    padding: 0 5px;
+}
+
+nav a:hover {
+    color: white;
+    background-color: rgba(255,255,255,0.2);
+    outline: 1px solid white;
+}
+
+nav .dropdown-nav {
+    height: 0;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    transition: all 0.2s;
+    overflow: hidden;
+    opacity: 0;
+}
+
+nav li:hover .dropdown-nav {
+    height: auto;
+    opacity: 1;
+}
+
+nav li .dropdown-nav li {
+    width: 100%;
+}
+
+nav li .dropdown-nav li a {
+    color: black;
+    padding: 8px 35px 8px 35px;
+    margin: 5px;
+    text-align: center;
+    display: block;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+nav li .dropdown-nav li:hover a {
+    background-color: transparent;
+    outline: none;
+}
+
+nav li .dropdown-nav #loginBtn a {
+    background-color: #17a2b8;
+    color: white;
+    transition: all 0.2s;
+}
+
+nav li .dropdown-nav #loginBtn:hover a {
+    text-decoration: none;
+    box-shadow: inset 0px 0px 100px rgba(0,0,0,0.2);
+}
+
+#wide {
+    display: none;
+}
+
+@media only screen and (min-width: 1060px) {
+    #wide {
+        display: flex;
+    }
+
+    #short {
+        display: none;
+    }
+}
+
+
+
+#mySidenav #menus div {
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
