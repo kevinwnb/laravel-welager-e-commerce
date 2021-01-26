@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/font awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/font awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 
     <script src="/assets/js/sidenav.js"></script>
