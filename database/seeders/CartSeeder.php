@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class IconSeeder extends Seeder
+class CartSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,9 @@ class IconSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //carts
+        DB::table('carts')->insert([
+            'user_id' => 1
+        ]);
     }
 }

@@ -225,23 +225,17 @@
             </li>
           </ul>
 
-          <h5 class="mt-5">About this item</h5>
+          <h5 class="mt-5">Product Summary</h5>
           <ul>
-            <li
-              v-for="(item, index) in product.summary"
-              :key="index"
-            >
+            <li v-for="(item, index) in product.summary" :key="index">
               {{ item.summary }}
             </li>
           </ul>
 
-          <h5 class="mt-5">Product Specifications</h5>
+          <h5 class="mt-5">Product Properties</h5>
           <table class="table table-bordered">
             <tbody>
-              <tr
-                v-for="(item, index) in product.properties"
-                :key="index"
-              >
+              <tr v-for="(item, index) in product.properties" :key="index">
                 <td class="bg-light font-weight-bold">{{ item.title }}</td>
                 <td>{{ item.description }}</td>
               </tr>
@@ -311,19 +305,7 @@
           </div>
         </div>
         <div class="col-md-5 p-md-0">
-          <h5>Customer Images</h5>
-          <div>
-            <img
-              class="d-inline-block border mx-1"
-              style="height: 50px"
-              v-for="n in 10"
-              :key="n"
-              :src="
-                product.images.filter((i) => i.id == selected_img_id)[0].path
-              "
-            />
-          </div>
-          <h5 class="mt-5">Reviews</h5>
+          <h5>Reviews</h5>
           <div>
             <div
               class="border my-2 p-3"

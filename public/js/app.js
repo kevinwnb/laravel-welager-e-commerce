@@ -3704,24 +3704,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productparam", "ship_to"],
   data: function data() {
@@ -42607,7 +42589,7 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _c("h5", { staticClass: "mt-5" }, [_vm._v("About this item")]),
+            _c("h5", { staticClass: "mt-5" }, [_vm._v("Product Summary")]),
             _vm._v(" "),
             _c(
               "ul",
@@ -42621,9 +42603,7 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _c("h5", { staticClass: "mt-5" }, [
-              _vm._v("Product Specifications")
-            ]),
+            _c("h5", { staticClass: "mt-5" }, [_vm._v("Product Properties")]),
             _vm._v(" "),
             _c("table", { staticClass: "table table-bordered" }, [
               _c(
@@ -42773,26 +42753,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-5 p-md-0" }, [
-            _c("h5", [_vm._v("Customer Images")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              _vm._l(10, function(n) {
-                return _c("img", {
-                  key: n,
-                  staticClass: "d-inline-block border mx-1",
-                  staticStyle: { height: "50px" },
-                  attrs: {
-                    src: _vm.product.images.filter(function(i) {
-                      return i.id == _vm.selected_img_id
-                    })[0].path
-                  }
-                })
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c("h5", { staticClass: "mt-5" }, [_vm._v("Reviews")]),
+            _c("h5", [_vm._v("Reviews")]),
             _vm._v(" "),
             _c(
               "div",
