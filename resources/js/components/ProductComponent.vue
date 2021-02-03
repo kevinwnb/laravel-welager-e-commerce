@@ -55,7 +55,7 @@
 
     <div class="m-3">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div style="position: sticky; top: 1rem">
             <div
               id="imagePreview"
@@ -151,7 +151,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
           <h4 class="pt-3 pt-md-0">Earphone lorem ipsum dolor sit</h4>
           <div class="my-3">
             <p
