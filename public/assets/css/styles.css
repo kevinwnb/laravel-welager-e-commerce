@@ -2,13 +2,9 @@
 @import "absoluter.css";
 @import "footer.css";
 
-
-
 [v-cloak] {
     display: none;
 }
-
-
 
 .subnav {
     background-color: #1f2326;
@@ -19,14 +15,10 @@
     color: white;
 }
 
-
-
 body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
-
 
 nav li {
     list-style-type: none;
@@ -40,7 +32,7 @@ nav a {
 
 nav a:hover {
     color: white;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     outline: 1px solid white;
 }
 
@@ -87,7 +79,7 @@ nav li .dropdown-nav #loginBtn a {
 
 nav li .dropdown-nav #loginBtn:hover a {
     text-decoration: none;
-    box-shadow: inset 0px 0px 100px rgba(0,0,0,0.2);
+    box-shadow: inset 0px 0px 100px rgba(0, 0, 0, 0.2);
 }
 
 #wide {
@@ -104,10 +96,8 @@ nav li .dropdown-nav #loginBtn:hover a {
     }
 }
 
-
-
 #mySidenav #menus div {
-    width: 250px;
+    width: 300px;
     display: inline-block;
     vertical-align: top;
 }

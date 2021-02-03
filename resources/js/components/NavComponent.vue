@@ -200,7 +200,7 @@
       <!--<h2>Categories</h2>-->
       <div id="menus" style="position: relative; white-space: nowrap">
         <div>
-          <p style="color: white; margin: 8px 8px 8px 32px">Categories</p>
+          <h5 style="color: white; margin: 8px 8px 16px 24px">Categories</h5>
           <a
             v-for="c in categories.filter((c) => c.parent_id == null)"
             :key="c.id"
@@ -210,26 +210,29 @@
             class="d-flex align-items-center"
             >{{ c.name }}<i class="fas fa-chevron-right ml-auto"></i
           ></a>
-          <a
-            v-if="!is_authenticated"
-            href="/login"
-            class="d-block ml-3 mt-3 mr-3 bg-info text-white"
-            style="border: 2px solid #117a8b"
-            >Sign In</a
-          >
-          <a
-            v-if="is_authenticated"
-            href="/logout"
-            class="d-block ml-3 mt-3 mr-3 bg-danger text-white"
-            style="border: 2px solid rgba(0, 0, 0, 0.3)"
-            >Sign Out</a
-          >
-          <a
-            href="javascript:void(0)"
-            class="d-block ml-3 mt-2 mr-3"
-            style="border: 2px solid black"
-            >Management</a
-          >
+          <div class="mt-3">
+            <a
+              v-if="!is_authenticated"
+              href="/login"
+              class="d-flex justify-content-center p-2 rounded ml-3 mt-3 mr-3 bg-info text-white"
+              style="border: 2px solid #117a8b"
+              >Sign In</a
+            >
+            <a
+              v-if="is_authenticated"
+              href="/logout"
+              class="d-flex justify-content-center p-2 ml-3 mt-3 mr-3 bg-danger text-white"
+              style="border: 2px solid rgba(0, 0, 0, 0.3)"
+              >Sign Out</a
+            >
+            <p class="text-muted text-center my-3">or</p>
+            <a
+              href="javascript:void(0)"
+              class="d-flex justify-content-center p-2 ml-3 mt-2 mr-3"
+              style="border: 2px solid black"
+              >Create Account</a
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -333,13 +336,13 @@ export default {
         document.querySelector("#menus").style.left.slice(0, -2)
       );
       $("#menus").animate(
-        { left: menusLeftPosition + 250 + "px" },
+        { left: menusLeftPosition + 300 + "px" },
         200,
         function () {
           e.target.parentElement.remove();
           var menusWidth = Number(document.querySelector("#menus").style.width);
           document.querySelector("#menus").style.width =
-            menusWidth - 250 + "px";
+            menusWidth - 300 + "px";
         }
       );
     },
@@ -362,30 +365,37 @@ export default {
       this.categories
         .filter((c) => c.parent_id == e.target.id)
         .forEach((c) => {
-          newMenuItem = document.createElement("a");
-          newMenuItem.setAttribute("href", "/browse/" + c.id);
-          newMenuItem.classList.add("d-flex");
-          newMenuItem.classList.add("align-items-center");
-          newMenuItem.id = c.id;
-
-          //   newMenuItemArrowRight = document.createElement("i");
-          //   newMenuItemArrowRight.classList.add("fas");
-          //   newMenuItemArrowRight.classList.add("fa-chevron-right");
-          //   newMenuItemArrowRight.classList.add("ml-auto");
-
-          newMenuItem.prepend(c.name);
-          newMenu.appendChild(newMenuItem);
+          //   newMenuItem = document.createElement("a");
+          //   newMenuItem.setAttribute("href", "/browse/" + c.id);
+          //   newMenuItem.classList.add("d-flex");
+          //   newMenuItem.classList.add("align-items-center");
+          //   newMenuItem.id = c.id;
+          //   //   newMenuItemArrowRight = document.createElement("i");
+          //   //   newMenuItemArrowRight.classList.add("fas");
+          //   //   newMenuItemArrowRight.classList.add("fa-chevron-right");
+          //   //   newMenuItemArrowRight.classList.add("ml-auto");
+          //   //The single line of code below will write the category name into the anchor tag
+          //   //newMenuItem.prepend(c.name);
+          //   newMenuItem.prepend("All");
+          //   newMenu.appendChild(newMenuItem);
         });
 
+      newMenuItem = document.createElement("a");
+      newMenuItem.setAttribute("href", "/browse/" + e.target.id);
+      newMenuItem.classList.add("d-flex");
+      newMenuItem.classList.add("align-items-center");
+      newMenuItem.id = e.target.id;
+      newMenuItem.prepend("All");
+      newMenu.appendChild(newMenuItem);
       e.target.parentElement.parentElement.appendChild(newMenu);
 
       //calculations
       var menusLeftPosition = Number(
         document.querySelector("#menus").style.left.slice(0, -2)
       );
-      $("#menus").animate({ left: menusLeftPosition - 250 + "px" }, 200);
+      $("#menus").animate({ left: menusLeftPosition - 300 + "px" }, 200);
       var menusWidth = Number(document.querySelector("#menus").style.width);
-      document.querySelector("#menus").style.width = menusWidth + 250 + "px";
+      document.querySelector("#menus").style.width = menusWidth + 300 + "px";
     },
   },
 };

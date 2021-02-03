@@ -2985,6 +2985,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3078,11 +3081,11 @@ __webpack_require__.r(__webpack_exports__);
     goBack: function goBack(e) {
       var menusLeftPosition = Number(document.querySelector("#menus").style.left.slice(0, -2));
       $("#menus").animate({
-        left: menusLeftPosition + 250 + "px"
+        left: menusLeftPosition + 300 + "px"
       }, 200, function () {
         e.target.parentElement.remove();
         var menusWidth = Number(document.querySelector("#menus").style.width);
-        document.querySelector("#menus").style.width = menusWidth - 250 + "px";
+        document.querySelector("#menus").style.width = menusWidth - 300 + "px";
       });
     },
     sidenavNextMenu: function sidenavNextMenu(e) {
@@ -3104,27 +3107,35 @@ __webpack_require__.r(__webpack_exports__);
       var newMenuItemArrowRight;
       this.categories.filter(function (c) {
         return c.parent_id == e.target.id;
-      }).forEach(function (c) {
-        newMenuItem = document.createElement("a");
-        newMenuItem.setAttribute("href", "/browse/" + c.id);
-        newMenuItem.classList.add("d-flex");
-        newMenuItem.classList.add("align-items-center");
-        newMenuItem.id = c.id; //   newMenuItemArrowRight = document.createElement("i");
-        //   newMenuItemArrowRight.classList.add("fas");
-        //   newMenuItemArrowRight.classList.add("fa-chevron-right");
-        //   newMenuItemArrowRight.classList.add("ml-auto");
-
-        newMenuItem.prepend(c.name);
-        newMenu.appendChild(newMenuItem);
+      }).forEach(function (c) {//   newMenuItem = document.createElement("a");
+        //   newMenuItem.setAttribute("href", "/browse/" + c.id);
+        //   newMenuItem.classList.add("d-flex");
+        //   newMenuItem.classList.add("align-items-center");
+        //   newMenuItem.id = c.id;
+        //   //   newMenuItemArrowRight = document.createElement("i");
+        //   //   newMenuItemArrowRight.classList.add("fas");
+        //   //   newMenuItemArrowRight.classList.add("fa-chevron-right");
+        //   //   newMenuItemArrowRight.classList.add("ml-auto");
+        //   //The single line of code below will write the category name into the anchor tag
+        //   //newMenuItem.prepend(c.name);
+        //   newMenuItem.prepend("All");
+        //   newMenu.appendChild(newMenuItem);
       });
+      newMenuItem = document.createElement("a");
+      newMenuItem.setAttribute("href", "/browse/" + e.target.id);
+      newMenuItem.classList.add("d-flex");
+      newMenuItem.classList.add("align-items-center");
+      newMenuItem.id = e.target.id;
+      newMenuItem.prepend("All");
+      newMenu.appendChild(newMenuItem);
       e.target.parentElement.parentElement.appendChild(newMenu); //calculations
 
       var menusLeftPosition = Number(document.querySelector("#menus").style.left.slice(0, -2));
       $("#menus").animate({
-        left: menusLeftPosition - 250 + "px"
+        left: menusLeftPosition - 300 + "px"
       }, 200);
       var menusWidth = Number(document.querySelector("#menus").style.width);
-      document.querySelector("#menus").style.width = menusWidth + 250 + "px";
+      document.querySelector("#menus").style.width = menusWidth + 300 + "px";
     }
   }
 });
@@ -41757,8 +41768,10 @@ var render = function() {
             "div",
             [
               _c(
-                "p",
-                { staticStyle: { color: "white", margin: "8px 8px 8px 32px" } },
+                "h5",
+                {
+                  staticStyle: { color: "white", margin: "8px 8px 16px 24px" }
+                },
                 [_vm._v("Categories")]
               ),
               _vm._v(" "),
@@ -41787,40 +41800,48 @@ var render = function() {
                 }
               ),
               _vm._v(" "),
-              !_vm.is_authenticated
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "d-block ml-3 mt-3 mr-3 bg-info text-white",
-                      staticStyle: { border: "2px solid #117a8b" },
-                      attrs: { href: "/login" }
-                    },
-                    [_vm._v("Sign In")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.is_authenticated
-                ? _c(
-                    "a",
-                    {
-                      staticClass:
-                        "d-block ml-3 mt-3 mr-3 bg-danger text-white",
-                      staticStyle: { border: "2px solid rgba(0, 0, 0, 0.3)" },
-                      attrs: { href: "/logout" }
-                    },
-                    [_vm._v("Sign Out")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "d-block ml-3 mt-2 mr-3",
-                  staticStyle: { border: "2px solid black" },
-                  attrs: { href: "javascript:void(0)" }
-                },
-                [_vm._v("Management")]
-              )
+              _c("div", { staticClass: "mt-3" }, [
+                !_vm.is_authenticated
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "d-flex justify-content-center p-2 rounded ml-3 mt-3 mr-3 bg-info text-white",
+                        staticStyle: { border: "2px solid #117a8b" },
+                        attrs: { href: "/login" }
+                      },
+                      [_vm._v("Sign In")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.is_authenticated
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "d-flex justify-content-center p-2 ml-3 mt-3 mr-3 bg-danger text-white",
+                        staticStyle: { border: "2px solid rgba(0, 0, 0, 0.3)" },
+                        attrs: { href: "/logout" }
+                      },
+                      [_vm._v("Sign Out")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-muted text-center my-3" }, [
+                  _vm._v("or")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "d-flex justify-content-center p-2 ml-3 mt-2 mr-3",
+                    staticStyle: { border: "2px solid black" },
+                    attrs: { href: "javascript:void(0)" }
+                  },
+                  [_vm._v("Create Account")]
+                )
+              ])
             ],
             2
           )
