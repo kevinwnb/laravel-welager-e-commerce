@@ -43831,7 +43831,7 @@ var render = function() {
             attrs: { id: "newArrivals" }
           },
           [
-            _c("h5", { staticClass: "text-dark" }, [_vm._v("New Arrivals")]),
+            _c("h5", { staticClass: "text-dark" }, [_vm._v("New arrivals")]),
             _vm._v(" "),
             _c(
               "div",

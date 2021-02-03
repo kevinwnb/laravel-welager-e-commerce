@@ -16,7 +16,7 @@
         style="background-color: #fafafa; margin-top: 150px"
         class="p-3 rounded"
       >
-        <h5 class="text-dark">New Arrivals</h5>
+        <h5 class="text-dark">New arrivals</h5>
         <div class="row">
           <div
             class="col-lg-3 p-1"
