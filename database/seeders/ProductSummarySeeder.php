@@ -14,7 +14,7 @@ class ProductSummarySeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 12; $i++) {
             DB::table('product_summaries')->insert([
                 'summary' => 'Lorem ipsum 5%',
                 'product_id' => $i
