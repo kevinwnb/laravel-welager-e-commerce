@@ -10,13 +10,13 @@
       "
     ></div>
     <div class="container pb-5" style="min-height: 100vh; overflow: auto">
-      <!-- Featured -->
+      <!-- New Arrivals -->
       <section
-        id="featured"
-        style="background-color: white; margin-top: 150px"
+        id="newArrivals"
+        style="background-color: #fafafa; margin-top: 150px"
         class="p-3 rounded"
       >
-        <h5 class="text-dark">Featured</h5>
+        <h5 class="text-dark">New Arrivals</h5>
         <div class="row">
           <div
             class="col-lg-3 p-1"
@@ -24,8 +24,8 @@
             :key="p.id"
           >
             <div
-              class="card-body bg-light h-100"
-              style="border: 2px solid #efefef"
+              class="card-body h-100"
+              style="background-color: #ffffff; border: 2px solid #efefef"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"
@@ -51,7 +51,7 @@
       <!-- Recently viewed -->
       <section
         id="recentlyViewed"
-        style="background-color: white"
+        style="background-color: #fafafa"
         class="p-3 mt-5"
       >
         <h5 class="text-dark">Recently viewed</h5>
@@ -62,8 +62,8 @@
             :key="p.id"
           >
             <div
-              class="card-body bg-light h-100"
-              style="border: 2px solid #efefef"
+              class="card-body h-100"
+              style="background-color: white; border: 2px solid #efefef"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"
@@ -87,7 +87,11 @@
       </section>
 
       <!-- Buy it again -->
-      <section id="buyItAgain" style="background-color: white" class="p-3 mt-5">
+      <section
+        id="buyItAgain"
+        style="background-color: #fafafa"
+        class="p-3 mt-5"
+      >
         <h5 class="text-dark">Buy it again</h5>
         <div class="row">
           <div
@@ -96,8 +100,8 @@
             :key="p.id"
           >
             <div
-              class="card-body bg-light h-100"
-              style="border: 2px solid #efefef"
+              class="card-body h-100"
+              style="background-color: white; border: 2px solid #efefef"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"

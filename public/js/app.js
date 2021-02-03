@@ -4566,6 +4566,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -43820,11 +43824,14 @@ var render = function() {
           "section",
           {
             staticClass: "p-3 rounded",
-            staticStyle: { "background-color": "white", "margin-top": "150px" },
-            attrs: { id: "featured" }
+            staticStyle: {
+              "background-color": "#fafafa",
+              "margin-top": "150px"
+            },
+            attrs: { id: "newArrivals" }
           },
           [
-            _c("h5", { staticClass: "text-dark" }, [_vm._v("Featured")]),
+            _c("h5", { staticClass: "text-dark" }, [_vm._v("New Arrivals")]),
             _vm._v(" "),
             _c(
               "div",
@@ -43838,8 +43845,11 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "card-body bg-light h-100",
-                        staticStyle: { border: "2px solid #efefef" }
+                        staticClass: "card-body h-100",
+                        staticStyle: {
+                          "background-color": "#ffffff",
+                          border: "2px solid #efefef"
+                        }
                       },
                       [
                         _c(
@@ -43905,7 +43915,7 @@ var render = function() {
           "section",
           {
             staticClass: "p-3 mt-5",
-            staticStyle: { "background-color": "white" },
+            staticStyle: { "background-color": "#fafafa" },
             attrs: { id: "recentlyViewed" }
           },
           [
@@ -43923,8 +43933,11 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "card-body bg-light h-100",
-                        staticStyle: { border: "2px solid #efefef" }
+                        staticClass: "card-body h-100",
+                        staticStyle: {
+                          "background-color": "white",
+                          border: "2px solid #efefef"
+                        }
                       },
                       [
                         _c(
@@ -43990,7 +44003,7 @@ var render = function() {
           "section",
           {
             staticClass: "p-3 mt-5",
-            staticStyle: { "background-color": "white" },
+            staticStyle: { "background-color": "#fafafa" },
             attrs: { id: "buyItAgain" }
           },
           [
@@ -44008,8 +44021,11 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "card-body bg-light h-100",
-                        staticStyle: { border: "2px solid #efefef" }
+                        staticClass: "card-body h-100",
+                        staticStyle: {
+                          "background-color": "white",
+                          border: "2px solid #efefef"
+                        }
                       },
                       [
                         _c(
