@@ -41794,7 +41794,9 @@ var render = function() {
                     },
                     [
                       _vm._v(_vm._s(c.name)),
-                      _c("i", { staticClass: "fas fa-chevron-right ml-auto" })
+                      _c("i", {
+                        staticClass: "fas fa-chevron-right ml-auto mr-2"
+                      })
                     ]
                   )
                 }

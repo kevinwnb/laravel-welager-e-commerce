@@ -208,7 +208,7 @@
             v-on:click="sidenavNextMenu($event)"
             href="javascript:void(0)"
             class="d-flex align-items-center"
-            >{{ c.name }}<i class="fas fa-chevron-right ml-auto"></i
+            >{{ c.name }}<i class="fas fa-chevron-right ml-auto mr-2"></i
           ></a>
           <div class="mt-3">
             <a
