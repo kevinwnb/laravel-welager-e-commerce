@@ -37,19 +37,31 @@ class ImageSeeder extends Seeder
             ]);
             DB::table('images')->insert([
                 'product_id' => 6,
-                'path' => 'storage/product images/shoes.jpg'
+                'path' => 'storage/product images/laserprinter.jpg'
             ]);
             DB::table('images')->insert([
                 'product_id' => 7,
-                'path' => 'storage/product images/socks.jpg'
+                'path' => 'storage/product images/wireless speaker.jpg'
             ]);
             DB::table('images')->insert([
                 'product_id' => 8,
-                'path' => 'storage/product images/tshirt.jpg'
+                'path' => 'storage/product images/camera.jpg'
             ]);
             DB::table('images')->insert([
                 'product_id' => 9,
-                'path' => 'storage/product images/pants.jpg'
+                'path' => 'storage/product images/dvdplayer.jpg'
+            ]);
+            DB::table('images')->insert([
+                'product_id' => 10,
+                'path' => 'storage/product images/pc.jpg'
+            ]);
+            DB::table('images')->insert([
+                'product_id' => 11,
+                'path' => 'storage/product images/microsd.jpg'
+            ]);
+            DB::table('images')->insert([
+                'product_id' => 12,
+                'path' => 'storage/product images/webcam.jpg'
             ]);
         }
     }

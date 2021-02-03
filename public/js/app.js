@@ -4477,13 +4477,103 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: {
         items: [],
         images: []
-      }
+      },
+      offer_types: ["Featured", "Recently viewed"]
     };
   },
   created: function created() {
@@ -41755,7 +41845,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", { staticClass: "nav-item" }, [
           _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
-            _vm._v("Weland")
+            _vm._v("Wetech")
           ])
         ])
       ]),
@@ -41820,7 +41910,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("li", { staticClass: "nav-item" }, [
         _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
-          _vm._v("Weland")
+          _vm._v("Wetech")
         ])
       ])
     ])
@@ -43714,74 +43804,271 @@ var render = function() {
         width: "100%",
         height: "100vh",
         position: "absolute",
-        background: "linear-gradient(#5bc0de, #ffffff)"
+        background: "linear-gradient(#5bc0de, #ffffff)",
+        "z-index": "-1"
       }
     }),
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container pb-5", staticStyle: { "min-height": "100vh" } },
+      {
+        staticClass: "container pb-5",
+        staticStyle: { "min-height": "100vh", overflow: "auto" }
+      },
       [
         _c(
-          "div",
-          { staticClass: "row", staticStyle: { "padding-top": "150px" } },
-          _vm._l(_vm.products.items, function(p) {
-            return _c("div", { key: p.id, staticClass: "col-lg-3 mt-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "card-body bg-light h-100",
-                  staticStyle: { border: "2px solid #e1e1e1" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticStyle: {
-                        "text-align": "center",
-                        height: "200px",
-                        "line-height": "200px"
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: {
-                          "max-height": "200px",
-                          "max-width": "100%"
-                        },
-                        attrs: {
-                          src: _vm.products.images.filter(function(i) {
-                            return i.product_id == p.id
-                          })[0].path
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", [
+          "section",
+          {
+            staticClass: "p-3 rounded",
+            staticStyle: { "background-color": "white", "margin-top": "150px" },
+            attrs: { id: "featured" }
+          },
+          [
+            _c("h5", { staticClass: "text-dark" }, [_vm._v("Featured")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(
+                _vm.products.items.filter(function(p) {
+                  return p.id <= 4
+                }),
+                function(p) {
+                  return _c("div", { key: p.id, staticClass: "col-lg-3 p-1" }, [
                     _c(
-                      "p",
+                      "div",
                       {
-                        staticClass: "card-text",
-                        staticStyle: { "margin-top": "16px" }
+                        staticClass: "card-body bg-light h-100",
+                        staticStyle: { border: "2px solid #efefef" }
                       },
-                      [_vm._v(_vm._s(p.name))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "card-text",
-                        attrs: { href: "/product/" + p.id }
-                      },
-                      [_vm._v("See product")]
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "text-align": "center",
+                              height: "200px",
+                              "line-height": "200px"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticStyle: {
+                                "max-height": "200px",
+                                "max-width": "100%"
+                              },
+                              attrs: {
+                                src: _vm.products.images.filter(function(i) {
+                                  return i.product_id == p.id
+                                })[0].path
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "p",
+                            {
+                              staticClass: "card-text",
+                              staticStyle: { "margin-top": "16px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(p.name) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-text",
+                              attrs: { href: "/product/" + p.id }
+                            },
+                            [_vm._v("Shop Now")]
+                          )
+                        ])
+                      ]
                     )
                   ])
-                ]
-              )
-            ])
-          }),
-          0
+                }
+              ),
+              0
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "section",
+          {
+            staticClass: "p-3 mt-5",
+            staticStyle: { "background-color": "white" },
+            attrs: { id: "recentlyViewed" }
+          },
+          [
+            _c("h5", { staticClass: "text-dark" }, [_vm._v("Recently viewed")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(
+                _vm.products.items.filter(function(p) {
+                  return p.id > 4 && p.id <= 8
+                }),
+                function(p) {
+                  return _c("div", { key: p.id, staticClass: "col-lg-3 p-1" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card-body bg-light h-100",
+                        staticStyle: { border: "2px solid #efefef" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "text-align": "center",
+                              height: "200px",
+                              "line-height": "200px"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticStyle: {
+                                "max-height": "200px",
+                                "max-width": "100%"
+                              },
+                              attrs: {
+                                src: _vm.products.images.filter(function(i) {
+                                  return i.product_id == p.id
+                                })[0].path
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "p",
+                            {
+                              staticClass: "card-text",
+                              staticStyle: { "margin-top": "16px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(p.name) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-text",
+                              attrs: { href: "/product/" + p.id }
+                            },
+                            [_vm._v("Shop Now")]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                }
+              ),
+              0
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "section",
+          {
+            staticClass: "p-3 mt-5",
+            staticStyle: { "background-color": "white" },
+            attrs: { id: "buyItAgain" }
+          },
+          [
+            _c("h5", { staticClass: "text-dark" }, [_vm._v("Buy it again")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(
+                _vm.products.items.filter(function(p) {
+                  return p.id > 8
+                }),
+                function(p) {
+                  return _c("div", { key: p.id, staticClass: "col-lg-3 p-1" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card-body bg-light h-100",
+                        staticStyle: { border: "2px solid #efefef" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "text-align": "center",
+                              height: "200px",
+                              "line-height": "200px"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticStyle: {
+                                "max-height": "200px",
+                                "max-width": "100%"
+                              },
+                              attrs: {
+                                src: _vm.products.images.filter(function(i) {
+                                  return i.product_id == p.id
+                                })[0].path
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "p",
+                            {
+                              staticClass: "card-text",
+                              staticStyle: { "margin-top": "16px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(p.name) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "card-text",
+                              attrs: { href: "/product/" + p.id }
+                            },
+                            [_vm._v("Shop Now")]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                }
+              ),
+              0
+            )
+          ]
         )
       ]
     )

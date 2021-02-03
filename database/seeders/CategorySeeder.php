@@ -17,67 +17,55 @@ class CategorySeeder extends Seeder
         //categories
         DB::table('categories')->insert([
             'parent_id' => null,
-            'name' => 'Clothing',
+            'name' => 'Televisions',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('categories')->insert([
             'parent_id' => null,
-            'name' => 'Electronics',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-            'parent_id' => 2,
-            'name' => 'Storage & Memory',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-            'parent_id' => 2,
-            'name' => 'Laptops & Desktop PC\'s',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-            'parent_id' => 2,
             'name' => 'Smartphones',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('categories')->insert([
-            'parent_id' => 2,
+            'parent_id' => null,
+            'name' => 'Storage & Memory',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('categories')->insert([
+            'parent_id' => null,
+            'name' => 'Laptops & Desktop PCs',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('categories')->insert([
+            'parent_id' => null,
+            'name' => 'Printers & Scanners',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('categories')->insert([
+            'parent_id' => null,
             'name' => 'Headphones & Speakers',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('categories')->insert([
-            'parent_id' => 1,
-            'name' => 'Socks',
+            'parent_id' => null,
+            'name' => 'Cameras',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('categories')->insert([
-            'parent_id' => 1,
-            'name' => 'Pants',
+            'parent_id' => null,
+            'name' => 'Accessories',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('categories')->insert([
-            'parent_id' => 1,
-            'name' => 'T-Shirts',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-            'parent_id' => 1,
-            'name' => 'Jackets',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('categories')->insert([
-            'parent_id' => 1,
-            'name' => 'Shoes',
+            'parent_id' => null,
+            'name' => 'DVD players',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

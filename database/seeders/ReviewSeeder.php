@@ -38,82 +38,20 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
-        //reviews
-        for ($n = 1; $n <= 100; $n++) {
-            $stars = $this->getRandomWeightedElement([1 => 10, 2 => 5, 3 => 7, 4 => 9, 5 => 69]);
+        for ($p = 1; $p <= 12; $p++) {
+            for ($n = 1; $n <= 100; $n++) {
+                $stars = $this->getRandomWeightedElement([1 => 10, 2 => 5, 3 => 7, 4 => 9, 5 => 69]);
 
-            DB::table('reviews')->insert([
-                'product_id' => 1,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 2,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 3,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 4,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 5,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 6,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 7,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-            DB::table('reviews')->insert([
-                'product_id' => 8,
-                'user_id' => $n,
-                'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
-                'stars' => $stars,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
+                DB::table('reviews')->insert([
+                    'product_id' => $p,
+                    'user_id' => $n,
+                    'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
+                    'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
+                    'stars' => $stars,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+            }
         }
     }
 }

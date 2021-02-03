@@ -12,7 +12,7 @@
             ></a>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand ml-2" href="/">Weland</a>
+            <a class="navbar-brand ml-2" href="/">Wetech</a>
           </li>
         </div>
 
@@ -67,7 +67,7 @@
           ></a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand ml-2" href="/">Weland</a>
+          <a class="navbar-brand ml-2" href="/">Wetech</a>
         </li>
       </div>
 
