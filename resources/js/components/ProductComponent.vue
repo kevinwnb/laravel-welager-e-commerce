@@ -55,20 +55,27 @@
 
     <div class="m-3">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div style="position: sticky; top: 1rem">
             <div
               id="imagePreview"
               style="
                 border: 2px solid #c0c0c0;
                 margin-bottom: 8px;
-                height: 350px;
-                line-height: 350px;
+                width: 100%;
+                padding-top: 100%;
+                position: relative;
                 text-align: center;
               "
             >
               <img
-                style="max-width: 100%; max-height: 350px"
+                style="
+                  position: absolute;
+                  max-width: 100%;
+                  max-height: 100%;
+                  top: 0;
+                  left: 0;
+                "
                 v-bind:src="
                   product.images.filter((i) => i.id == selected_img_id)[0].path
                 "
@@ -77,60 +84,74 @@
 
             <div
               style="
-                height: 50px;
-                line-height: 50px;
                 display: flex;
+                align-items: center;
                 justify-content: space-between;
               "
             >
               <div
-                class="pre-images d-inline-block"
-                style="width: 11.7%; height: 50px; outline: 1px solid #c0c0c0"
+                style="width: 11%"
                 v-for="image in product.images"
                 :key="image.id"
-                :id="image.id"
-                @mouseenter="changeSelectedImg($event)"
               >
-                <img
-                  class="mx-auto"
+                <div
+                  class="pre-images"
                   style="
-                    max-width: 100%;
-                    max-height: 50px;
-                    display: block;
+                    width: 100%;
+                    padding-top: 100%;
                     position: relative;
-                    top: 50%;
-                    transform: translateY(-50%);
+                    outline: 1px solid #c0c0c0;
                   "
-                  :src="image.path"
-                  :id="'image' + image.id"
-                />
+                  :id="image.id"
+                  @mouseenter="changeSelectedImg($event)"
+                >
+                  <img
+                    style="
+                      max-width: 100%;
+                      max-height: 100%;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                    "
+                    :src="image.path"
+                    :id="'image' + image.id"
+                  />
+                </div>
               </div>
               <div
+                style="width: 11%"
                 v-for="index in 8 - product.images.length"
                 :key="'empty' + index"
-                style="
-                  width: 11.7%;
-                  outline: 1px solid #c0c0c0;
-                  height: 50px;
-                  display: inline-block;
-                  text-align: center;
-                "
               >
-                <h3
+                <div
                   style="
-                    cursor: default;
-                    display: inline;
-                    line-height: 50px;
-                    color: #c0c0c0;
+                    width: 100%;
+                    padding-top: 100%;
+                    position: relative;
+                    outline: 1px solid #c0c0c0;
+                    text-align: center;
                   "
                 >
-                  {{ product.images.length + index }}
-                </h3>
+                  <p
+                    style="
+                      cursor: default;
+                      position: absolute;
+                      width: 100%;
+                      top: 50%;
+                      transform: translateY(-50%);
+                      left: 0;
+                      color: #c0c0c0;
+                      font-size: 1.5vw;
+                    "
+                  >
+                    {{ product.images.length + index }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <h4 class="pt-3 pt-md-0">Earphone lorem ipsum dolor sit</h4>
           <div class="my-3">
             <p

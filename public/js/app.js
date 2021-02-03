@@ -3715,6 +3715,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productparam", "ship_to"],
   data: function data() {
@@ -42467,7 +42488,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "m-3" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticStyle: { position: "sticky", top: "1rem" } }, [
               _c(
                 "div",
@@ -42475,15 +42496,22 @@ var render = function() {
                   staticStyle: {
                     border: "2px solid #c0c0c0",
                     "margin-bottom": "8px",
-                    height: "350px",
-                    "line-height": "350px",
+                    width: "100%",
+                    "padding-top": "100%",
+                    position: "relative",
                     "text-align": "center"
                   },
                   attrs: { id: "imagePreview" }
                 },
                 [
                   _c("img", {
-                    staticStyle: { "max-width": "100%", "max-height": "350px" },
+                    staticStyle: {
+                      position: "absolute",
+                      "max-width": "100%",
+                      "max-height": "100%",
+                      top: "0",
+                      left: "0"
+                    },
                     attrs: {
                       src: _vm.product.images.filter(function(i) {
                         return i.id == _vm.selected_img_id
@@ -42497,9 +42525,8 @@ var render = function() {
                 "div",
                 {
                   staticStyle: {
-                    height: "50px",
-                    "line-height": "50px",
                     display: "flex",
+                    "align-items": "center",
                     "justify-content": "space-between"
                   }
                 },
@@ -42507,34 +42534,38 @@ var render = function() {
                   _vm._l(_vm.product.images, function(image) {
                     return _c(
                       "div",
-                      {
-                        key: image.id,
-                        staticClass: "pre-images d-inline-block",
-                        staticStyle: {
-                          width: "11.7%",
-                          height: "50px",
-                          outline: "1px solid #c0c0c0"
-                        },
-                        attrs: { id: image.id },
-                        on: {
-                          mouseenter: function($event) {
-                            return _vm.changeSelectedImg($event)
-                          }
-                        }
-                      },
+                      { key: image.id, staticStyle: { width: "11%" } },
                       [
-                        _c("img", {
-                          staticClass: "mx-auto",
-                          staticStyle: {
-                            "max-width": "100%",
-                            "max-height": "50px",
-                            display: "block",
-                            position: "relative",
-                            top: "50%",
-                            transform: "translateY(-50%)"
+                        _c(
+                          "div",
+                          {
+                            staticClass: "pre-images",
+                            staticStyle: {
+                              width: "100%",
+                              "padding-top": "100%",
+                              position: "relative",
+                              outline: "1px solid #c0c0c0"
+                            },
+                            attrs: { id: image.id },
+                            on: {
+                              mouseenter: function($event) {
+                                return _vm.changeSelectedImg($event)
+                              }
+                            }
                           },
-                          attrs: { src: image.path, id: "image" + image.id }
-                        })
+                          [
+                            _c("img", {
+                              staticStyle: {
+                                "max-width": "100%",
+                                "max-height": "100%",
+                                position: "absolute",
+                                top: "0",
+                                left: "0"
+                              },
+                              attrs: { src: image.path, id: "image" + image.id }
+                            })
+                          ]
+                        )
                       ]
                     )
                   }),
@@ -42542,32 +42573,41 @@ var render = function() {
                   _vm._l(8 - _vm.product.images.length, function(index) {
                     return _c(
                       "div",
-                      {
-                        key: "empty" + index,
-                        staticStyle: {
-                          width: "11.7%",
-                          outline: "1px solid #c0c0c0",
-                          height: "50px",
-                          display: "inline-block",
-                          "text-align": "center"
-                        }
-                      },
+                      { key: "empty" + index, staticStyle: { width: "11%" } },
                       [
                         _c(
-                          "h3",
+                          "div",
                           {
                             staticStyle: {
-                              cursor: "default",
-                              display: "inline",
-                              "line-height": "50px",
-                              color: "#c0c0c0"
+                              width: "100%",
+                              "padding-top": "100%",
+                              position: "relative",
+                              outline: "1px solid #c0c0c0",
+                              "text-align": "center"
                             }
                           },
                           [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(_vm.product.images.length + index) +
-                                "\n              "
+                            _c(
+                              "p",
+                              {
+                                staticStyle: {
+                                  cursor: "default",
+                                  position: "absolute",
+                                  width: "100%",
+                                  top: "50%",
+                                  transform: "translateY(-50%)",
+                                  left: "0",
+                                  color: "#c0c0c0",
+                                  "font-size": "1.5vw"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(_vm.product.images.length + index) +
+                                    "\n                "
+                                )
+                              ]
                             )
                           ]
                         )
@@ -42580,7 +42620,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-5" }, [
+          _c("div", { staticClass: "col-md-6" }, [
             _c("h4", { staticClass: "pt-3 pt-md-0" }, [
               _vm._v("Earphone lorem ipsum dolor sit")
             ]),
