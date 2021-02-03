@@ -42488,7 +42488,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "m-3" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "col-md-4" }, [
             _c("div", { staticStyle: { position: "sticky", top: "1rem" } }, [
               _c(
                 "div",
@@ -42620,7 +42620,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-5" }, [
             _c("h4", { staticClass: "pt-3 pt-md-0" }, [
               _vm._v("Earphone lorem ipsum dolor sit")
             ]),
