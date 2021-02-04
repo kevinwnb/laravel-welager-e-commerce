@@ -3053,6 +3053,7 @@ __webpack_require__.r(__webpack_exports__);
       user: "",
       mutable_category_id: 0,
       search_string_short: "",
+      mutable_search_string: this.search_string,
       autocomplete_data: []
     };
   },
@@ -3100,11 +3101,14 @@ __webpack_require__.r(__webpack_exports__);
     autocomplete: function autocomplete() {
       var _this3 = this;
 
-      fetch("api/autocomplete/" + this.search_string + "/" + this.mutable_category_id).then(function (res) {
+      fetch("api/autocomplete/" + this.mutable_search_string + "/" + this.mutable_category_id).then(function (res) {
         return res.json();
       }).then(function (data) {
-        return _this3.autocomplete_data = data.map(function (item) {
-          return item.name;
+        //alert(JSON.stringify(data, null, 2));
+        _this3.autocomplete_data = data.items.map(function (item) {
+          return {
+            name: item.name
+          };
         });
       });
     },
@@ -41798,8 +41802,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.search_string,
-                          expression: "search_string"
+                          value: _vm.mutable_search_string,
+                          expression: "mutable_search_string"
                         }
                       ],
                       staticClass: "form-control w-100",
@@ -41811,7 +41815,7 @@ var render = function() {
                         autocomplete: "off",
                         "aria-label": "Search"
                       },
-                      domProps: { value: _vm.search_string },
+                      domProps: { value: _vm.mutable_search_string },
                       on: {
                         keypress: function($event) {
                           return _vm.autocomplete()
@@ -41820,7 +41824,7 @@ var render = function() {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.search_string = $event.target.value
+                          _vm.mutable_search_string = $event.target.value
                         }
                       }
                     }),
@@ -41844,7 +41848,7 @@ var render = function() {
                             staticStyle: { "font-size": "1rem" },
                             attrs: { href: "javascript:void(0)" }
                           },
-                          [_vm._v(_vm._s(item.toLowerCase()))]
+                          [_vm._v(_vm._s(item.name.toLowerCase()))]
                         )
                       }),
                       0

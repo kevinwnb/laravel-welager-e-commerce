@@ -132,7 +132,7 @@
               placeholder="Search"
               autocomplete="off"
               aria-label="Search"
-              v-model="search_string"
+              v-model="mutable_search_string"
               @keypress="autocomplete()"
             />
             <div
@@ -145,7 +145,7 @@
                 href="javascript:void(0)"
                 class="text-dark d-block my-1"
                 style="font-size: 1rem"
-                >{{ item.toLowerCase() }}</a
+                >{{ item.name.toLowerCase() }}</a
               >
             </div>
           </div>
@@ -267,6 +267,7 @@ export default {
       user: "",
       mutable_category_id: 0,
       search_string_short: "",
+      mutable_search_string: this.search_string,
       autocomplete_data: [],
     };
   },
@@ -316,14 +317,17 @@ export default {
     autocomplete() {
       fetch(
         "api/autocomplete/" +
-          this.search_string +
+          this.mutable_search_string +
           "/" +
           this.mutable_category_id
       )
         .then((res) => res.json())
-        .then(
-          (data) => (this.autocomplete_data = data.map((item) => item.name))
-        );
+        .then((data) => {
+          //alert(JSON.stringify(data, null, 2));
+          this.autocomplete_data = data.items.map((item) => {
+            return { name: item.name };
+          });
+        });
     },
     checkLogin() {
       fetch("/api/login/check")

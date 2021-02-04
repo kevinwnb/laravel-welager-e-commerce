@@ -17,18 +17,7 @@ use Illuminate\Support\Facades\Response;
 
 class ProductController extends Controller
 {
-    public function autocomplete($search_string, $category_id)
-    {
-        $results = Product::where('name', 'like', $search_string . '%')->get();
-        return Response::json($results, 200);
-    }
-
-    /**
-     * Return resources that match search criteria.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function search($search_string, $category_id)
+    private function getProducts($search_string, $category_id)
     {
         $products = NULL;
         if (intval($category_id) == NULL) {
@@ -63,6 +52,25 @@ class ProductController extends Controller
             }
             $products['images'] = Image::whereIn('product_id', $ids)->get();
         }
+
+        return $products;
+    }
+
+    public function autocomplete($search_string, $category_id)
+    {
+        $products = $this->getProducts($search_string, $category_id);
+
+        return Response::json($products, 200);
+    }
+
+    /**
+     * Return resources that match search criteria.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search($search_string, $category_id)
+    {
+        $products = $this->getProducts($search_string, $category_id);
 
         return view('search')->with(['products' => json_encode($products), 'search_string' => $search_string, 'category_id' => $category_id]);
     }
