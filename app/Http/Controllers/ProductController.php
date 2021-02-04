@@ -19,7 +19,7 @@ class ProductController extends Controller
 {
     public function autocomplete($search_string, $category_id)
     {
-        $results = Product::where('name', 'like', '%' . $search_string . '%')->get();
+        $results = Product::where('name', 'like', $search_string . '%')->get();
         return Response::json($results, 200);
     }
 
