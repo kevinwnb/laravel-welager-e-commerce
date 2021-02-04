@@ -16,4 +16,14 @@ class AddressController extends Controller
         $default_address->province = Province::where('id', $default_address->province_id)->value('name');
         return Response::json($default_address, 200);
     }
+
+    public function getAddresses()
+    {
+        $addresses = Address::select('addresses.*', 'provinces.name as province', 'provinces.alpha')->where('user_id', Auth::id())
+            ->join('provinces', 'provinces.id', '=', 'addresses.province_id')->get();
+        // foreach ($addresses as $address) {
+        //     $address->province = Province::where('id', $address->province_id)->value('name');
+        // }
+        return Response::json($addresses, 200);
+    }
 }

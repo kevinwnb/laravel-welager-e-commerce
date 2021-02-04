@@ -73,8 +73,9 @@
                   position: absolute;
                   max-width: 100%;
                   max-height: 100%;
-                  top: 0;
-                  left: 0;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
                 "
                 v-bind:src="
                   product.images.filter((i) => i.id == selected_img_id)[0].path
@@ -152,7 +153,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <h4 class="pt-3 pt-md-0">Earphone lorem ipsum dolor sit</h4>
+          <h4 class="pt-3 pt-md-0">{{ product["0"].name }}</h4>
           <div class="my-3">
             <p
               class="bg-info d-inline p-1"

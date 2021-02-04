@@ -13,7 +13,7 @@
       <!-- New Arrivals -->
       <section
         id="newArrivals"
-        style="background-color: #fafafa; margin-top: 150px"
+        style="background-color: #f0f0f0; margin-top: 150px"
         class="p-3 rounded"
       >
         <h5 class="text-dark">New arrivals</h5>
@@ -25,7 +25,7 @@
           >
             <div
               class="card-body h-100"
-              style="background-color: #ffffff; border: 2px solid #efefef"
+              style="background-color: #ffffff; border: 2px solid #e1e1e1"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"
@@ -51,7 +51,7 @@
       <!-- Recently viewed -->
       <section
         id="recentlyViewed"
-        style="background-color: #fafafa"
+        style="background-color: #f0f0f0"
         class="p-3 mt-5"
       >
         <h5 class="text-dark">Recently viewed</h5>
@@ -63,7 +63,7 @@
           >
             <div
               class="card-body h-100"
-              style="background-color: white; border: 2px solid #efefef"
+              style="background-color: white; border: 2px solid #e1e1e1"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"
@@ -89,7 +89,7 @@
       <!-- Buy it again -->
       <section
         id="buyItAgain"
-        style="background-color: #fafafa"
+        style="background-color: #f0f0f0"
         class="p-3 mt-5"
       >
         <h5 class="text-dark">Buy it again</h5>
@@ -101,7 +101,7 @@
           >
             <div
               class="card-body h-100"
-              style="background-color: white; border: 2px solid #efefef"
+              style="background-color: white; border: 2px solid #e1e1e1"
             >
               <div
                 style="text-align: center; height: 200px; line-height: 200px"

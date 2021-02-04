@@ -77,7 +77,10 @@
         class="form-inline justify-content-center"
         style="flex-grow: 1"
       >
-        <div class="input-group w-100" style="max-width: 600px">
+        <div
+          class="input-group w-100 position-relative"
+          style="max-width: 600px"
+        >
           <div class="input-group-prepend">
             <select
               v-model="mutable_category_id"
@@ -131,12 +134,27 @@
             placeholder="Search"
             aria-label="Search"
             v-model="search_string"
+            @keypress="autocomplete()"
           />
 
           <div class="input-group-append">
             <button class="btn btn-info" type="submit">
               <i class="fas fa-search"></i> Search
             </button>
+          </div>
+
+          <div
+            class="w-100 p-3 position-absolute"
+            style="background-color: white; top: 100%; z-index: 10"
+          >
+            <a
+              v-for="(item, index) in autocomplete_data"
+              v-bind:key="index"
+              href="javascript:void(0)"
+              class="text-dark d-block my-1"
+              style="font-size: 1rem"
+              >{{ item.toLowerCase() }}</a
+            >
           </div>
         </div>
       </form>
@@ -250,6 +268,7 @@ export default {
       user: "",
       mutable_category_id: 0,
       search_string_short: "",
+      autocomplete_data: [],
     };
   },
   created() {
@@ -295,6 +314,18 @@ export default {
     // }
   },
   methods: {
+    autocomplete() {
+      fetch(
+        "api/autocomplete/" +
+          this.search_string +
+          "/" +
+          this.mutable_category_id
+      )
+        .then((res) => res.json())
+        .then(
+          (data) => (this.autocomplete_data = data.map((item) => item.name))
+        );
+    },
     checkLogin() {
       fetch("/api/login/check")
         .then((res) => res.json())

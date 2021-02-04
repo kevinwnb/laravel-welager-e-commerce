@@ -1,6 +1,7 @@
 @import "sidenav.css";
 @import "absoluter.css";
 @import "footer.css";
+@import "autocomplete.css";
 
 [v-cloak] {
     display: none;

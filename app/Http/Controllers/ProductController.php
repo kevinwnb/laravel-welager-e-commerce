@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Review;
+use Illuminate\Support\Facades\Response;
 
 class ProductController extends Controller
 {
+    public function autocomplete($search_string, $category_id)
+    {
+        $results = Product::where('name', 'like', '%' . $search_string . '%')->get();
+        return Response::json($results, 200);
+    }
+
     /**
      * Return resources that match search criteria.
      *
@@ -26,6 +33,7 @@ class ProductController extends Controller
         $products = NULL;
         if (intval($category_id) == NULL) {
             $products['items'] = Product::select(['products.*'])
+                ->distinct()
                 ->join('images', 'products.id', '=', 'images.product_id')
                 ->where('keywords', 'like', '%' . $search_string . '%')
                 ->orWhere('name', 'like', '%' . $search_string . '%')
@@ -37,6 +45,7 @@ class ProductController extends Controller
             $products['images'] = Image::whereIn('product_id', $ids)->get();
         } else {
             $products['items'] = Product::select(['products.*'])
+                ->distinct()
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->join('images', 'products.id', '=', 'images.product_id')
                 ->where(function ($query) use ($category_id) {

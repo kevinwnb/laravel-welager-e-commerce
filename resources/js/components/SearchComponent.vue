@@ -6,7 +6,7 @@
         v-for="p in products.items"
         :key="p.id"
       >
-        <div class="card p-2 m-2" style="background-color: white;">
+        <div class="card p-2 m-2" style="background-color: white">
           <div style="line-height: 200px; height: 200px; text-align: center">
             <img
               style="max-height: 200px; width: auto; max-width: 100%"
@@ -35,6 +35,7 @@ export default {
   },
   created() {
     this.products = JSON.parse(this.productsparam);
+    //alert(JSON.stringify(this.products, null, 2));
   },
   mounted() {
     console.log("Component mounted.");

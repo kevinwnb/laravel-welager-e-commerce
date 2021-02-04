@@ -2030,16 +2030,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {//
+    return {
+      addresses: [],
+      selectedAddressId: 1
     };
   },
-  created: function created() {//
+  created: function created() {
+    var _this = this;
+
+    fetch("api/addresses").then(function (res) {
+      return res.json();
+    }).then(function (data) {
+      _this.addresses = data; //alert(JSON.stringify(this.addresses, null, 2));
+    });
   },
   mounted: function mounted() {//
   },
-  methods: {//
+  methods: {
+    changeAddress: function changeAddress() {
+      var _this2 = this;
+
+      this.$emit("changeAddress", this.addresses.filter(function (a) {
+        return a.id == _this2.selectedAddressId;
+      })[0]);
+    }
   }
 });
 
@@ -2222,6 +2254,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productParam"],
   data: function data() {
@@ -2247,6 +2281,10 @@ __webpack_require__.r(__webpack_exports__);
     console.log("Component mounted.");
   },
   methods: {
+    changeAddress: function changeAddress(a) {
+      //alert(JSON.stringify(a, null, 2));
+      this.address = a;
+    },
     getDefaultAddress: function getDefaultAddress() {
       var _this = this;
 
@@ -2988,6 +3026,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -2997,7 +3053,8 @@ __webpack_require__.r(__webpack_exports__);
       is_authenticated: false,
       user: "",
       mutable_category_id: 0,
-      search_string_short: ""
+      search_string_short: "",
+      autocomplete_data: []
     };
   },
   created: function created() {
@@ -3041,20 +3098,31 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
-    checkLogin: function checkLogin() {
+    autocomplete: function autocomplete() {
       var _this3 = this;
+
+      fetch("api/autocomplete/" + this.search_string + "/" + this.mutable_category_id).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        return _this3.autocomplete_data = data.map(function (item) {
+          return item.name;
+        });
+      });
+    },
+    checkLogin: function checkLogin() {
+      var _this4 = this;
 
       fetch("/api/login/check").then(function (res) {
         return res.json();
       }).then(function (data) {
-        _this3.is_authenticated = data.is_authenticated;
-        _this3.user = data.user;
+        _this4.is_authenticated = data.is_authenticated;
+        _this4.user = data.user;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getCartItems: function getCartItems() {
-      var _this4 = this;
+      var _this5 = this;
 
       fetch("/api/cart/items").then(function (res) {
         return res.json();
@@ -3067,7 +3135,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
 
-        _this4.cart_item_quantity = quantity;
+        _this5.cart_item_quantity = quantity;
       });
     },
     search: function search() {
@@ -3089,7 +3157,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     sidenavNextMenu: function sidenavNextMenu(e) {
-      var _this5 = this;
+      var _this6 = this;
 
       var newMenu = document.createElement("div");
       var goBack = document.createElement("a");
@@ -3100,7 +3168,7 @@ __webpack_require__.r(__webpack_exports__);
       goBackArrow.classList.add("fa-arrow-left");
       goBack.prepend(goBackArrow, " Go Back");
       goBack.addEventListener("click", function (e) {
-        _this5.goBack(e);
+        _this6.goBack(e);
       });
       newMenu.appendChild(goBack);
       var newMenuItem;
@@ -3374,6 +3442,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -4323,7 +4392,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.products = JSON.parse(this.productsparam);
+    this.products = JSON.parse(this.productsparam); //alert(JSON.stringify(this.products, null, 2));
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -40594,7 +40663,66 @@ var render = function() {
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _vm._m(2)
+            _c(
+              "div",
+              { staticClass: "modal-body" },
+              _vm._l(_vm.addresses, function(a) {
+                return _c(
+                  "label",
+                  {
+                    key: a.id,
+                    staticClass: "card-body d-inline-block border rounded"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedAddressId,
+                          expression: "selectedAddressId"
+                        }
+                      ],
+                      attrs: { type: "radio", name: "address" },
+                      domProps: {
+                        value: a.id,
+                        checked: a.default == 1,
+                        checked: _vm._q(_vm.selectedAddressId, a.id)
+                      },
+                      on: {
+                        change: [
+                          function($event) {
+                            _vm.selectedAddressId = a.id
+                          },
+                          _vm.changeAddress
+                        ]
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticStyle: { cursor: "default" } }, [
+                      _vm._v("\n            " + _vm._s(a.address)),
+                      _c("br"),
+                      _vm._v(
+                        _vm._s(a.city) +
+                          ", " +
+                          _vm._s(a.alpha) +
+                          ",\n            " +
+                          _vm._s(a.postal_code)
+                      ),
+                      _c("br"),
+                      _vm._v("Canada"),
+                      _c("br"),
+                      _vm._v(
+                        "\n            Phone: " +
+                          _vm._s(a.phone) +
+                          "\n          "
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
           ])
         ]
       )
@@ -40644,14 +40772,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-body" }, [
-      _c("div", [_c("p", [_vm._v("VISA **** **** **** 1111")])])
     ])
   }
 ]
@@ -40759,7 +40879,13 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("address-management-modal-component"),
+      _c("address-management-modal-component", {
+        on: {
+          changeAddress: function($event) {
+            return _vm.changeAddress($event)
+          }
+        }
+      }),
       _vm._v(" "),
       _c("payment-method-management-modal-component", {
         attrs: { paymentmethodid: _vm.payment_method.id },
@@ -41555,7 +41681,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "input-group w-100",
+                staticClass: "input-group w-100 position-relative",
                 staticStyle: { "max-width": "600px" }
               },
               [
@@ -41680,6 +41806,9 @@ var render = function() {
                   },
                   domProps: { value: _vm.search_string },
                   on: {
+                    keypress: function($event) {
+                      return _vm.autocomplete()
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -41689,7 +41818,32 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "w-100 p-3 position-absolute",
+                    staticStyle: {
+                      "background-color": "white",
+                      top: "100%",
+                      "z-index": "10"
+                    }
+                  },
+                  _vm._l(_vm.autocomplete_data, function(item, index) {
+                    return _c(
+                      "a",
+                      {
+                        key: index,
+                        staticClass: "text-dark d-block my-1",
+                        staticStyle: { "font-size": "1rem" },
+                        attrs: { href: "javascript:void(0)" }
+                      },
+                      [_vm._v(_vm._s(item.toLowerCase()))]
+                    )
+                  }),
+                  0
+                )
               ]
             )
           ]
@@ -42509,8 +42663,9 @@ var render = function() {
                       position: "absolute",
                       "max-width": "100%",
                       "max-height": "100%",
-                      top: "0",
-                      left: "0"
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)"
                     },
                     attrs: {
                       src: _vm.product.images.filter(function(i) {
@@ -42622,7 +42777,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "col-md-5" }, [
             _c("h4", { staticClass: "pt-3 pt-md-0" }, [
-              _vm._v("Earphone lorem ipsum dolor sit")
+              _vm._v(_vm._s(_vm.product["0"].name))
             ]),
             _vm._v(" "),
             _vm._m(2),
@@ -43888,7 +44043,7 @@ var render = function() {
           {
             staticClass: "p-3 rounded",
             staticStyle: {
-              "background-color": "#fafafa",
+              "background-color": "#f0f0f0",
               "margin-top": "150px"
             },
             attrs: { id: "newArrivals" }
@@ -43911,7 +44066,7 @@ var render = function() {
                         staticClass: "card-body h-100",
                         staticStyle: {
                           "background-color": "#ffffff",
-                          border: "2px solid #efefef"
+                          border: "2px solid #e1e1e1"
                         }
                       },
                       [
@@ -43978,7 +44133,7 @@ var render = function() {
           "section",
           {
             staticClass: "p-3 mt-5",
-            staticStyle: { "background-color": "#fafafa" },
+            staticStyle: { "background-color": "#f0f0f0" },
             attrs: { id: "recentlyViewed" }
           },
           [
@@ -43999,7 +44154,7 @@ var render = function() {
                         staticClass: "card-body h-100",
                         staticStyle: {
                           "background-color": "white",
-                          border: "2px solid #efefef"
+                          border: "2px solid #e1e1e1"
                         }
                       },
                       [
@@ -44066,7 +44221,7 @@ var render = function() {
           "section",
           {
             staticClass: "p-3 mt-5",
-            staticStyle: { "background-color": "#fafafa" },
+            staticStyle: { "background-color": "#f0f0f0" },
             attrs: { id: "buyItAgain" }
           },
           [
@@ -44087,7 +44242,7 @@ var render = function() {
                         staticClass: "card-body h-100",
                         staticStyle: {
                           "background-color": "white",
-                          border: "2px solid #efefef"
+                          border: "2px solid #e1e1e1"
                         }
                       },
                       [

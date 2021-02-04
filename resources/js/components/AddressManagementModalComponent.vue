@@ -39,9 +39,25 @@
           </button>
         </div>
         <div class="modal-body">
-          <div>
-            <p>VISA **** **** **** 1111</p>
-          </div>
+          <label
+            class="card-body d-inline-block border rounded"
+            v-for="a in addresses"
+            :key="a.id"
+          >
+            <input
+              type="radio"
+              name="address"
+              :value="a.id"
+              v-model="selectedAddressId"
+              @change="changeAddress"
+              :checked="a.default == 1"
+            />
+            <p style="cursor: default">
+              {{ a.address }}<br />{{ a.city }}, {{ a.alpha }},
+              {{ a.postal_code }}<br />Canada<br />
+              Phone: {{ a.phone }}
+            </p>
+          </label>
         </div>
       </div>
     </div>
@@ -51,17 +67,28 @@
 export default {
   data() {
     return {
-      //
+      addresses: [],
+      selectedAddressId: 1,
     };
   },
   created() {
-    //
+    fetch("api/addresses")
+      .then((res) => res.json())
+      .then((data) => {
+        this.addresses = data;
+        //alert(JSON.stringify(this.addresses, null, 2));
+      });
   },
   mounted() {
     //
   },
   methods: {
-    //
+    changeAddress: function () {
+      this.$emit(
+        "changeAddress",
+        this.addresses.filter((a) => a.id == this.selectedAddressId)[0]
+      );
+    },
   },
 };
 </script>

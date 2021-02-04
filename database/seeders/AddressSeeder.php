@@ -24,5 +24,14 @@ class AddressSeeder extends Seeder
             'postal_code' => 'K9H 2L1',
             'default' => 1,
         ]);
+        DB::table('addresses')->insert([
+            'user_id' => 1,
+            'phone' => '705-312-0694',
+            'city' => 'Peterborough',
+            'province_id' => 6,
+            'address' => '123 Main Street',
+            'postal_code' => 'K2F 1F8',
+            'default' => 0,
+        ]);
     }
 }

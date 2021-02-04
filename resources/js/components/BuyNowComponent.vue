@@ -1,7 +1,9 @@
 <template>
   <div>
     <!--Address Modal-->
-    <address-management-modal-component></address-management-modal-component>
+    <address-management-modal-component
+      @changeAddress="changeAddress($event)"
+    ></address-management-modal-component>
 
     <!--Payment Method Modal-->
     <payment-method-management-modal-component
@@ -134,6 +136,10 @@ export default {
     console.log("Component mounted.");
   },
   methods: {
+    changeAddress: function (a) {
+      //alert(JSON.stringify(a, null, 2));
+      this.address = a;
+    },
     getDefaultAddress: function () {
       fetch("api/addresses/default")
         .then((res) => res.json())

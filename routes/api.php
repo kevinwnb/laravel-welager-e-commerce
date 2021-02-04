@@ -45,3 +45,5 @@ Route::get('/stripe/paymentmethods', [StripeController::class, 'getPaymentMethod
 Route::post('/buynow/placeorder', [BuyNowController::class, 'placeOrder']);
 Route::post('/createpm', [StripeController::class, 'createPaymentMethod']);
 Route::get('/addresses/default', [AddressController::class, 'getDefaultAddress']);
+Route::get('/addresses', [AddressController::class, 'getAddresses']);
+Route::get('/autocomplete/{search_string}/{category_id}', [ProductController::class, 'autocomplete']);
