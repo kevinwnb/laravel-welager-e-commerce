@@ -77,10 +77,7 @@
         class="form-inline justify-content-center"
         style="flex-grow: 1"
       >
-        <div
-          class="input-group w-100 position-relative"
-          style="max-width: 600px"
-        >
+        <div class="input-group w-100" style="max-width: 600px">
           <div class="input-group-prepend">
             <select
               v-model="mutable_category_id"
@@ -126,35 +123,37 @@
             </select>
           </div>
 
-          <input
-            id="searchString"
-            class="form-control"
-            style="border-radius: 0"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            v-model="search_string"
-            @keypress="autocomplete()"
-          />
+          <div class="position-relative" style="flex-grow: 1">
+            <input
+              id="searchString"
+              class="form-control w-100"
+              style="border-radius: 0"
+              type="search"
+              placeholder="Search"
+              autocomplete="off"
+              aria-label="Search"
+              v-model="search_string"
+              @keypress="autocomplete()"
+            />
+            <div
+              class="w-100 p-3 position-absolute"
+              style="background-color: white; top: 100%; z-index: 10"
+            >
+              <a
+                v-for="(item, index) in autocomplete_data"
+                v-bind:key="index"
+                href="javascript:void(0)"
+                class="text-dark d-block my-1"
+                style="font-size: 1rem"
+                >{{ item.toLowerCase() }}</a
+              >
+            </div>
+          </div>
 
           <div class="input-group-append">
             <button class="btn btn-info" type="submit">
               <i class="fas fa-search"></i> Search
             </button>
-          </div>
-
-          <div
-            class="w-100 p-3 position-absolute"
-            style="background-color: white; top: 100%; z-index: 10"
-          >
-            <a
-              v-for="(item, index) in autocomplete_data"
-              v-bind:key="index"
-              href="javascript:void(0)"
-              class="text-dark d-block my-1"
-              style="font-size: 1rem"
-              >{{ item.toLowerCase() }}</a
-            >
           </div>
         </div>
       </form>

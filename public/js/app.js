@@ -3043,7 +3043,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -41681,7 +41680,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "input-group w-100 position-relative",
+                staticClass: "input-group w-100",
                 staticStyle: { "max-width": "600px" }
               },
               [
@@ -41787,63 +41786,73 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.search_string,
-                      expression: "search_string"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  staticStyle: { "border-radius": "0" },
-                  attrs: {
-                    id: "searchString",
-                    type: "search",
-                    placeholder: "Search",
-                    "aria-label": "Search"
-                  },
-                  domProps: { value: _vm.search_string },
-                  on: {
-                    keypress: function($event) {
-                      return _vm.autocomplete()
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.search_string = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "w-100 p-3 position-absolute",
-                    staticStyle: {
-                      "background-color": "white",
-                      top: "100%",
-                      "z-index": "10"
-                    }
+                    staticClass: "position-relative",
+                    staticStyle: { "flex-grow": "1" }
                   },
-                  _vm._l(_vm.autocomplete_data, function(item, index) {
-                    return _c(
-                      "a",
-                      {
-                        key: index,
-                        staticClass: "text-dark d-block my-1",
-                        staticStyle: { "font-size": "1rem" },
-                        attrs: { href: "javascript:void(0)" }
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.search_string,
+                          expression: "search_string"
+                        }
+                      ],
+                      staticClass: "form-control w-100",
+                      staticStyle: { "border-radius": "0" },
+                      attrs: {
+                        id: "searchString",
+                        type: "search",
+                        placeholder: "Search",
+                        autocomplete: "off",
+                        "aria-label": "Search"
                       },
-                      [_vm._v(_vm._s(item.toLowerCase()))]
+                      domProps: { value: _vm.search_string },
+                      on: {
+                        keypress: function($event) {
+                          return _vm.autocomplete()
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.search_string = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "w-100 p-3 position-absolute",
+                        staticStyle: {
+                          "background-color": "white",
+                          top: "100%",
+                          "z-index": "10"
+                        }
+                      },
+                      _vm._l(_vm.autocomplete_data, function(item, index) {
+                        return _c(
+                          "a",
+                          {
+                            key: index,
+                            staticClass: "text-dark d-block my-1",
+                            staticStyle: { "font-size": "1rem" },
+                            attrs: { href: "javascript:void(0)" }
+                          },
+                          [_vm._v(_vm._s(item.toLowerCase()))]
+                        )
+                      }),
+                      0
                     )
-                  }),
-                  0
-                )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(3)
               ]
             )
           ]
