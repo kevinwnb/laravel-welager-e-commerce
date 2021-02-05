@@ -21,11 +21,12 @@ class ProductController extends Controller
     {
         $products = NULL;
         if (intval($category_id) == NULL) {
+            $search_string = strtolower($search_string);
             $products['items'] = Product::select(['products.*'])
                 ->distinct()
                 ->join('images', 'products.id', '=', 'images.product_id')
                 ->where('keywords', 'like', '%' . $search_string . '%')
-                ->orWhere('name', 'like', '%' . $search_string . '%')
+                ->orWhere('name', 'like', $search_string . '%')
                 ->get();
             $ids = [];
             foreach ($products['items'] as $p) {
@@ -33,6 +34,7 @@ class ProductController extends Controller
             }
             $products['images'] = Image::whereIn('product_id', $ids)->get();
         } else {
+            $search_string = strtolower($search_string);
             $products['items'] = Product::select(['products.*'])
                 ->distinct()
                 ->join('categories', 'products.category_id', '=', 'categories.id')
@@ -42,8 +44,8 @@ class ProductController extends Controller
                         ->orWhere('categories.parent_id', $category_id);
                 })
                 ->where(function ($query) use ($search_string) {
-                    $query->where('keywords', 'like', '%' . $search_string . '%')
-                        ->orWhere('products.name', 'like', '%' . $search_string . '%');
+                    $query->where('keywords like %' . $search_string . '%')
+                        ->orWhere('products.name', 'like', $search_string . '%');
                 })
                 ->get();
             $ids = [];
