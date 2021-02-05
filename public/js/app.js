@@ -41817,7 +41817,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.mutable_search_string },
                       on: {
-                        keypress: function($event) {
+                        keyup: function($event) {
                           return _vm.autocomplete()
                         },
                         input: function($event) {

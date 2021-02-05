@@ -133,7 +133,7 @@
               autocomplete="off"
               aria-label="Search"
               v-model="mutable_search_string"
-              @keypress="autocomplete()"
+              @keyup="autocomplete()"
             />
             <div
               class="w-100 p-3 position-absolute"
