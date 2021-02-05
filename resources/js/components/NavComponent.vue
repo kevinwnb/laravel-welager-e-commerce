@@ -145,7 +145,7 @@
                 href="javascript:void(0)"
                 class="text-dark d-block my-1"
                 style="font-size: 1rem"
-                >{{ item.name.toLowerCase() }}</a
+                >{{ item.toLowerCase() }}</a
               >
             </div>
           </div>
@@ -324,9 +324,15 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           //alert(JSON.stringify(data, null, 2));
-          this.autocomplete_data = data.items.map((item) => {
-            return { name: item.name };
+          var keywords = "";
+          data.items.forEach((item) => {
+            keywords += ", " + item.keywords;
           });
+          this.autocomplete_data = keywords
+            .split(", ")
+            .filter((k) => k.startsWith(this.mutable_search_string))
+            .map((k) => k.trim())
+            .slice(0, 10);
         });
     },
     checkLogin() {

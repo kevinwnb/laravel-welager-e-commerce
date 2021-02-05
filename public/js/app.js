@@ -3105,11 +3105,15 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (data) {
         //alert(JSON.stringify(data, null, 2));
-        _this3.autocomplete_data = data.items.map(function (item) {
-          return {
-            name: item.name
-          };
+        var keywords = "";
+        data.items.forEach(function (item) {
+          keywords += ", " + item.keywords;
         });
+        _this3.autocomplete_data = keywords.split(", ").filter(function (k) {
+          return k.startsWith(_this3.mutable_search_string);
+        }).map(function (k) {
+          return k.trim();
+        }).slice(0, 10);
       });
     },
     checkLogin: function checkLogin() {
@@ -41848,7 +41852,7 @@ var render = function() {
                             staticStyle: { "font-size": "1rem" },
                             attrs: { href: "javascript:void(0)" }
                           },
-                          [_vm._v(_vm._s(item.name.toLowerCase()))]
+                          [_vm._v(_vm._s(item.toLowerCase()))]
                         )
                       }),
                       0

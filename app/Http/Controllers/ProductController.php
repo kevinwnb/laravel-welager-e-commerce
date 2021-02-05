@@ -17,6 +17,34 @@ use Illuminate\Support\Facades\Response;
 
 class ProductController extends Controller
 {
+    private function getProductsAutocomplete($search_string, $category_id)
+    {
+        $products = NULL;
+        if (intval($category_id) == NULL) {
+            $search_string = strtolower($search_string);
+            $products['items'] = Product::select(['name', 'keywords'])
+                ->where('keywords', 'like', '%' . $search_string . '%')
+                ->orWhere('name', 'like', $search_string . '%')
+                ->get();
+        } else {
+            $search_string = strtolower($search_string);
+            $products['items'] = Product::select(['products.name', 'products.keywords'])
+                ->distinct()
+                ->join('categories', 'products.category_id', '=', 'categories.id')
+                ->where(function ($query) use ($category_id) {
+                    $query->where('categories.id', $category_id)
+                        ->orWhere('categories.parent_id', $category_id);
+                })
+                ->where(function ($query) use ($search_string) {
+                    $query->where('keywords', 'like', '%' . $search_string . '%')
+                        ->orWhere('products.name', 'like', $search_string . '%');
+                })
+                ->get();
+        }
+
+        return $products;
+    }
+
     private function getProducts($search_string, $category_id)
     {
         $products = NULL;
@@ -60,7 +88,7 @@ class ProductController extends Controller
 
     public function autocomplete($search_string, $category_id)
     {
-        $products = $this->getProducts($search_string, $category_id);
+        $products = $this->getProductsAutocomplete($search_string, $category_id);
 
         return Response::json($products, 200);
     }
