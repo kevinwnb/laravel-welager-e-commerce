@@ -77,7 +77,7 @@ class ProductSeeder extends Seeder
             'name' => 'DVD player + remote',
             'description' => 'Watch your favorite movies and series with this DVD player',
             'price' => 85.71,
-            'keywords' => 'camera, photo camera, photo',
+            'keywords' => 'dvd player + remote, dvd player',
             'category_id' => 9,
         ]);
         DB::table('products')->insert([
