@@ -134,7 +134,10 @@
               aria-label="Search"
               v-model="mutable_search_string"
               @keyup="autocomplete()"
-              @blur="autocomplete_data = []"
+              @blur="
+                autocomplete_data = [];
+                toggleBodyOverflow();
+              "
             />
             <div
               v-if="
@@ -329,6 +332,13 @@ export default {
     // }
   },
   methods: {
+    toggleBodyOverflow() {
+      if (this.autocomplete_data.length > 0) {
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      } else {
+        document.getElementsByTagName("body")[0].style.overflow = "visible";
+      }
+    },
     autocomplete() {
       fetch(
         "api/autocomplete/" +
@@ -347,11 +357,7 @@ export default {
             .filter((k) => k.startsWith(this.mutable_search_string))
             .map((k) => k.trim())
             .slice(0, 10);
-          if (this.autocomplete_data.length > 0) {
-            document.getElementsByTagName("body")[0].style.overflow = "hidden";
-          } else {
-            document.getElementsByTagName("body")[0].style.overflow = "visible";
-          }
+          this.toggleBodyOverflow();
           //alert(JSON.stringify(this.autocomplete_data, null, 2));
         });
     },

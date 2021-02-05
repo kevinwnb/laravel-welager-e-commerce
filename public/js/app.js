@@ -3058,6 +3058,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3113,6 +3116,13 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
+    toggleBodyOverflow: function toggleBodyOverflow() {
+      if (this.autocomplete_data.length > 0) {
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
+      } else {
+        document.getElementsByTagName("body")[0].style.overflow = "visible";
+      }
+    },
     autocomplete: function autocomplete() {
       var _this3 = this;
 
@@ -3129,11 +3139,7 @@ __webpack_require__.r(__webpack_exports__);
           return k.trim();
         }).slice(0, 10);
 
-        if (_this3.autocomplete_data.length > 0) {
-          document.getElementsByTagName("body")[0].style.overflow = "hidden";
-        } else {
-          document.getElementsByTagName("body")[0].style.overflow = "visible";
-        } //alert(JSON.stringify(this.autocomplete_data, null, 2));
+        _this3.toggleBodyOverflow(); //alert(JSON.stringify(this.autocomplete_data, null, 2));
 
       });
     },
@@ -41847,6 +41853,7 @@ var render = function() {
                         },
                         blur: function($event) {
                           _vm.autocomplete_data = []
+                          _vm.toggleBodyOverflow()
                         },
                         input: function($event) {
                           if ($event.target.composing) {
