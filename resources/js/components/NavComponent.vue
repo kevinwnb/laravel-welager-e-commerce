@@ -134,10 +134,14 @@
               aria-label="Search"
               v-model="mutable_search_string"
               @keyup="autocomplete()"
+              @blur="autocomplete_data = []"
             />
             <div
+              v-if="
+                autocomplete_data !== undefined && autocomplete_data.length > 0
+              "
               class="w-100 p-3 position-absolute"
-              style="background-color: white; top: 100%; z-index: 10"
+              style="background-color: white; top: 100%; z-index: 11"
             >
               <a
                 v-for="(item, index) in autocomplete_data"
@@ -209,6 +213,17 @@
     <div class="subnav">
       <a href="javascript:void(0)">All</a>
     </div>
+
+    <div
+      v-if="autocomplete_data !== undefined && autocomplete_data.length > 0"
+      style="
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    ></div>
 
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
@@ -323,7 +338,6 @@ export default {
       )
         .then((res) => res.json())
         .then((data) => {
-          //alert(JSON.stringify(data, null, 2));
           var keywords = "";
           data.items.forEach((item) => {
             keywords += ", " + item.keywords;
@@ -333,6 +347,12 @@ export default {
             .filter((k) => k.startsWith(this.mutable_search_string))
             .map((k) => k.trim())
             .slice(0, 10);
+          if (this.autocomplete_data.length > 0) {
+            document.getElementsByTagName("body")[0].style.overflow = "hidden";
+          } else {
+            document.getElementsByTagName("body")[0].style.overflow = "visible";
+          }
+          //alert(JSON.stringify(this.autocomplete_data, null, 2));
         });
     },
     checkLogin() {

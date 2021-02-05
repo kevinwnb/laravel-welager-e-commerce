@@ -3043,6 +3043,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3104,7 +3119,6 @@ __webpack_require__.r(__webpack_exports__);
       fetch("api/autocomplete/" + this.mutable_search_string + "/" + this.mutable_category_id).then(function (res) {
         return res.json();
       }).then(function (data) {
-        //alert(JSON.stringify(data, null, 2));
         var keywords = "";
         data.items.forEach(function (item) {
           keywords += ", " + item.keywords;
@@ -3114,6 +3128,13 @@ __webpack_require__.r(__webpack_exports__);
         }).map(function (k) {
           return k.trim();
         }).slice(0, 10);
+
+        if (_this3.autocomplete_data.length > 0) {
+          document.getElementsByTagName("body")[0].style.overflow = "hidden";
+        } else {
+          document.getElementsByTagName("body")[0].style.overflow = "visible";
+        } //alert(JSON.stringify(this.autocomplete_data, null, 2));
+
       });
     },
     checkLogin: function checkLogin() {
@@ -41824,6 +41845,9 @@ var render = function() {
                         keyup: function($event) {
                           return _vm.autocomplete()
                         },
+                        blur: function($event) {
+                          _vm.autocomplete_data = []
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -41833,30 +41857,33 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "w-100 p-3 position-absolute",
-                        staticStyle: {
-                          "background-color": "white",
-                          top: "100%",
-                          "z-index": "10"
-                        }
-                      },
-                      _vm._l(_vm.autocomplete_data, function(item, index) {
-                        return _c(
-                          "a",
+                    _vm.autocomplete_data !== undefined &&
+                    _vm.autocomplete_data.length > 0
+                      ? _c(
+                          "div",
                           {
-                            key: index,
-                            staticClass: "text-dark d-block my-1",
-                            staticStyle: { "font-size": "1rem" },
-                            attrs: { href: "javascript:void(0)" }
+                            staticClass: "w-100 p-3 position-absolute",
+                            staticStyle: {
+                              "background-color": "white",
+                              top: "100%",
+                              "z-index": "11"
+                            }
                           },
-                          [_vm._v(_vm._s(item.toLowerCase()))]
+                          _vm._l(_vm.autocomplete_data, function(item, index) {
+                            return _c(
+                              "a",
+                              {
+                                key: index,
+                                staticClass: "text-dark d-block my-1",
+                                staticStyle: { "font-size": "1rem" },
+                                attrs: { href: "javascript:void(0)" }
+                              },
+                              [_vm._v(_vm._s(item.toLowerCase()))]
+                            )
+                          }),
+                          0
                         )
-                      }),
-                      0
-                    )
+                      : _vm._e()
                   ]
                 ),
                 _vm._v(" "),
@@ -41938,6 +41965,18 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm._m(7),
+    _vm._v(" "),
+    _vm.autocomplete_data !== undefined && _vm.autocomplete_data.length > 0
+      ? _c("div", {
+          staticStyle: {
+            "z-index": "10",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            "background-color": "rgba(0, 0, 0, 0.5)"
+          }
+        })
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [
       _c(
