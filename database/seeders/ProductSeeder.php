@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
             'description' => 'A smartphone for seamless multitask',
             'price' => 48.99,
             'keywords' => 'smartphone, phone',
-            'category_id' => 5,
+            'category_id' => 2,
         ]);
         DB::table('products')->insert([
             'name' => 'Thumbdrive USB 3.0',
