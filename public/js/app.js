@@ -3142,7 +3142,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     search: function search() {
-      var url = this.search_string ? "/search/" + this.search_string + "/" + this.mutable_category_id : "/";
+      var url = this.mutable_search_string ? "/search/" + this.mutable_search_string + "/" + this.mutable_category_id : "/";
       window.location.href = url;
     },
     searchShort: function searchShort() {
