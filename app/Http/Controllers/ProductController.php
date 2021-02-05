@@ -44,7 +44,7 @@ class ProductController extends Controller
                         ->orWhere('categories.parent_id', $category_id);
                 })
                 ->where(function ($query) use ($search_string) {
-                    $query->where('keywords like %' . $search_string . '%')
+                    $query->where('keywords', 'like', '%' . $search_string . '%')
                         ->orWhere('products.name', 'like', $search_string . '%');
                 })
                 ->get();
