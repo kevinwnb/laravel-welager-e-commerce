@@ -3061,6 +3061,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3116,7 +3118,7 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
-    toggleBodyOverflow: function toggleBodyOverflow() {
+    _toggleBodyOverflow: function _toggleBodyOverflow() {
       if (this.autocomplete_data.length > 0) {
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       } else {
@@ -41867,7 +41869,8 @@ var render = function() {
                       ? _c(
                           "div",
                           {
-                            staticClass: "w-100 p-3 position-absolute",
+                            staticClass:
+                              "w-100 p-3 position-absolute border shadow",
                             staticStyle: {
                               "background-color": "white",
                               top: "100%",
@@ -41971,16 +41974,8 @@ var render = function() {
     _vm._v(" "),
     _vm._m(7),
     _vm._v(" "),
-    _vm.autocomplete_data !== undefined && _vm.autocomplete_data.length > 0
-      ? _c("div", {
-          staticStyle: {
-            "z-index": "10",
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            "background-color": "rgba(0, 0, 0, 0.5)"
-          }
-        })
+     false
+      ? undefined
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [

@@ -143,7 +143,7 @@
               v-if="
                 autocomplete_data !== undefined && autocomplete_data.length > 0
               "
-              class="w-100 p-3 position-absolute"
+              class="w-100 p-3 position-absolute border shadow"
               style="background-color: white; top: 100%; z-index: 11"
             >
               <a
@@ -218,7 +218,9 @@
     </div>
 
     <div
-      v-if="autocomplete_data !== undefined && autocomplete_data.length > 0"
+      v-if="
+        false && autocomplete_data !== undefined && autocomplete_data.length > 0
+      "
       style="
         z-index: 10;
         width: 100%;
@@ -332,7 +334,7 @@ export default {
     // }
   },
   methods: {
-    toggleBodyOverflow() {
+    _toggleBodyOverflow() {
       if (this.autocomplete_data.length > 0) {
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       } else {
