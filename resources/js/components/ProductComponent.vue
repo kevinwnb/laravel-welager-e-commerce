@@ -331,9 +331,7 @@
           <div>
             <div
               class="border my-2 p-3"
-              v-for="review in product.reviews.filter(
-                (r) => r.id > product.reviews.length - 10
-              )"
+              v-for="review in product.reviews.slice(-10)"
               :key="review.id"
             >
               <h5>

@@ -3837,8 +3837,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productparam", "ship_to"],
   data: function data() {
@@ -43132,47 +43130,42 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              _vm._l(
-                _vm.product.reviews.filter(function(r) {
-                  return r.id > _vm.product.reviews.length - 10
-                }),
-                function(review) {
-                  return _c(
-                    "div",
-                    { key: review.id, staticClass: "border my-2 p-3" },
-                    [
-                      _c("h5", [
-                        _c(
-                          "span",
-                          { staticClass: "text-warning" },
-                          [
-                            _vm._l(review.stars, function(star) {
-                              return _c("i", {
-                                key: review.id + star,
-                                staticClass: "fas fa-star"
-                              })
-                            }),
-                            _vm._l(5 - review.stars, function(star) {
-                              return _c("i", {
-                                key: review.id + star + "2",
-                                staticClass: "far fa-star"
-                              })
+              _vm._l(_vm.product.reviews.slice(-10), function(review) {
+                return _c(
+                  "div",
+                  { key: review.id, staticClass: "border my-2 p-3" },
+                  [
+                    _c("h5", [
+                      _c(
+                        "span",
+                        { staticClass: "text-warning" },
+                        [
+                          _vm._l(review.stars, function(star) {
+                            return _c("i", {
+                              key: review.id + star,
+                              staticClass: "fas fa-star"
                             })
-                          ],
-                          2
-                        ),
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(review.title) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(review.review))])
-                    ]
-                  )
-                }
-              ),
+                          }),
+                          _vm._l(5 - review.stars, function(star) {
+                            return _c("i", {
+                              key: review.id + star + "2",
+                              staticClass: "far fa-star"
+                            })
+                          })
+                        ],
+                        2
+                      ),
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(review.title) +
+                          "\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(review.review))])
+                  ]
+                )
+              }),
               0
             )
           ]),
