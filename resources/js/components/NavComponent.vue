@@ -384,8 +384,8 @@ export default {
       window.location.href = url;
     },
     searchShort() {
-      var url = this.search_string_short
-        ? "/search/" + this.search_string_short + "/" + 0
+      var url = this.mutable_search_string
+        ? "/search/" + this.mutable_search_string + "/0"
         : "/";
       window.location.href = url;
     },
