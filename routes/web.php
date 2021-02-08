@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderPagesController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,8 @@ Route::get('/search/{search_string}/{category_id}', [ProductController::class, '
 Route::get('/browse/{category_id}', [ProductController::class, 'browse']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/cart', [CartController::class, 'index']);
-Route::get('/order/buynow/{product_id}/{quantity}', [OrderPagesController::class, 'buynow']);
+Route::get('/cart/checkout', [PagesController::class, 'checkout']);
+Route::get('/order/buynow/{product_id}/{quantity}', [PagesController::class, 'buynow']);
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return Inertia\Inertia::render('Dashboard');

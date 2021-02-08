@@ -4,10 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-require('jquery-zoom');
+require("./bootstrap");
+require("jquery-zoom");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,24 +20,82 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('nav-component', require('./components/NavComponent.vue').default);
-Vue.component('welcome-products-component', require('./components/WelcomeProductsComponent.vue').default);
-Vue.component('login-component', require('./components/LoginComponent.vue').default);
-Vue.component('register-component', require('./components/RegisterComponent.vue').default);
-Vue.component('search-component', require('./components/SearchComponent.vue').default);
-Vue.component('browse-component', require('./components/BrowseComponent.vue').default);
-Vue.component('product-component', require('./components/ProductComponent.vue').default);
-Vue.component('cart-component', require('./components/CartComponent.vue').default);
-Vue.component('reviews-component', require('./components/ReviewsComponent.vue').default);
-Vue.component('scrollable-modal-component', require('./components/ScrollableModalComponent.vue').default);
-Vue.component('sign-in-modal-component', require('./components/SignInModalComponent.vue').default);
-Vue.component('register-modal-component', require('./components/RegisterModalComponent.vue').default);
-Vue.component('buy-now-modal-component', require('./components/BuyNowModalComponent.vue').default);
-Vue.component('buy-now-component', require('./components/BuyNowComponent.vue').default);
-Vue.component('address-management-modal-component', require('./components/AddressManagementModalComponent.vue').default);
-Vue.component('payment-method-management-modal-component', require('./components/PaymentMethodManagementModalComponent.vue').default);
-Vue.component('add-payment-method-modal-component', require('./components/AddPaymentMethodModalComponent.vue').default);
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
+Vue.component(
+    "nav-component",
+    require("./components/NavComponent.vue").default
+);
+Vue.component(
+    "welcome-products-component",
+    require("./components/WelcomeProductsComponent.vue").default
+);
+Vue.component(
+    "login-component",
+    require("./components/LoginComponent.vue").default
+);
+Vue.component(
+    "register-component",
+    require("./components/RegisterComponent.vue").default
+);
+Vue.component(
+    "search-component",
+    require("./components/SearchComponent.vue").default
+);
+Vue.component(
+    "browse-component",
+    require("./components/BrowseComponent.vue").default
+);
+Vue.component(
+    "product-component",
+    require("./components/ProductComponent.vue").default
+);
+Vue.component(
+    "cart-component",
+    require("./components/CartComponent.vue").default
+);
+Vue.component(
+    "reviews-component",
+    require("./components/ReviewsComponent.vue").default
+);
+Vue.component(
+    "scrollable-modal-component",
+    require("./components/ScrollableModalComponent.vue").default
+);
+Vue.component(
+    "sign-in-modal-component",
+    require("./components/SignInModalComponent.vue").default
+);
+Vue.component(
+    "register-modal-component",
+    require("./components/RegisterModalComponent.vue").default
+);
+Vue.component(
+    "buy-now-modal-component",
+    require("./components/BuyNowModalComponent.vue").default
+);
+Vue.component(
+    "buy-now-component",
+    require("./components/BuyNowComponent.vue").default
+);
+Vue.component(
+    "address-management-modal-component",
+    require("./components/AddressManagementModalComponent.vue").default
+);
+Vue.component(
+    "payment-method-management-modal-component",
+    require("./components/PaymentMethodManagementModalComponent.vue").default
+);
+Vue.component(
+    "add-payment-method-modal-component",
+    require("./components/AddPaymentMethodModalComponent.vue").default
+);
+Vue.component(
+    "check-out-component",
+    require("./components/CheckOutComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -46,5 +104,5 @@ Vue.component('add-payment-method-modal-component', require('./components/AddPay
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app"
 });

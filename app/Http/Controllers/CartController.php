@@ -23,11 +23,34 @@ class CartController extends Controller
         Session::forget('cart');
     }
 
-    function bindCartToAccount()
+    function addSessionCartToAccount()
     {
-        $cart = Session::get('cart');
-        $cart->user_id = Auth::id();
-        $cart->save();
+        $cart_exists = count(Cart::where('user_id', Auth::id())->get()) > 0;
+        if ($cart_exists) {
+            $cart_id = Cart::where('user_id', Auth::id())->value('id');
+            foreach (Session::get('cart_items') as $cart_item) {
+                unset($cart_item->name);
+                unset($cart_item->price);
+                unset($cart_item->image);
+                $cart_item->cart_id = $cart_id;
+                $cart_item->save();
+            }
+            Session::forget('cart_items');
+        } else {
+            $cart = new Cart();
+            $cart->user_id = Auth::id();
+            $cart_id = $cart->save();
+            foreach (Session::get('cart_items') as $cart_item) {
+                unset($cart_item->name);
+                unset($cart_item->price);
+                unset($cart_item->image);
+                $cart_item->cart_id = $cart_id;
+                $cart_item->save();
+            }
+            Session::forget('cart_items');
+        }
+
+        return true;
     }
 
     function create()
@@ -92,7 +115,7 @@ class CartController extends Controller
     {
         if (Auth::check()) {
             $cart = Cart::where('user_id', Auth::id())->get();
-            $cart_items = CartItem::select(['cart_items.id', 'cart_items.quantity', 'products.name', 'products.price'])->join('products', 'cart_items.product_id', '=', 'products.id')->where('cart_id', $cart[0]->id)->get();
+            $cart_items = CartItem::select(['cart_items.id', 'cart_items.quantity', 'products.id as product_id', 'products.name', 'products.price'])->join('products', 'cart_items.product_id', '=', 'products.id')->where('cart_id', $cart[0]->id)->get();
             foreach ($cart_items as $item) {
                 $item->image = Image::where('product_id', $item->product_id)->first();
             }
@@ -155,7 +178,7 @@ class CartController extends Controller
                     }
                 }
                 Session::put('cart_items', $cart_items);
-                if(count(Session::get('cart_items')) == 0){
+                if (count(Session::get('cart_items')) == 0) {
                     Session::forget('cart_items');
                 }
                 return Response::json(['message' => 'Deletion successful'], 200);

@@ -12,6 +12,7 @@
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/font awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+    <link rel="icon" href="{{ URL::asset('/assets/images/favicon.png') }}" type="image/x-icon" />
 
     <script src="/assets/js/sidenav.js"></script>
     @yield('head-content')
@@ -36,7 +37,9 @@
             </div>
             <div class="col-md-6">
                 <h4 class="text-white mb-4">About</h4>
-                <p style="color: rgba(255, 255, 255, 0.3);">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat culpa itaque unde illo ipsa architecto ipsum veniam, fugit earum, accusantium, quas saepe nulla pariatur sint soluta aliquam nemo facilis deserunt.</p>
+                <p style="color: rgba(255, 255, 255, 0.3);">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Fugiat culpa itaque unde illo ipsa architecto ipsum veniam, fugit earum, accusantium, quas saepe
+                    nulla pariatur sint soluta aliquam nemo facilis deserunt.</p>
             </div>
             <div class="col-md-3 text-center">
                 <h5 class="text-white mb-4">Follow Us</h5>

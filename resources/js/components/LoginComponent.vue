@@ -2,7 +2,7 @@
   <div class="container text-center">
     <form
       @submit.prevent="handleLogin"
-      class="border p-2 mt-5 bg-light"
+      class="border p-2 my-5 bg-light"
       style="text-align: initial; min-width: 18rem; display: inline-block"
     >
       <h4 class="text-center mb-3">Login</h4>
@@ -56,16 +56,15 @@ export default {
           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
           Accept: "application/json",
         },
-      })
-        .then((res) => {
-          if (res.status == 200) {
-            location.reload();
-            //return res.json();
-          } else {
-            alert("Your credentials do not match our records, try again");
-          }
-        });
-        //.then((data) => console.log(data));
+      }).then((res) => {
+        if (res.status == 200) {
+          location.reload();
+          //return res.json();
+        } else {
+          alert("Your credentials do not match our records, try again");
+        }
+      });
+      //.then((data) => console.log(data));
     },
   },
 };

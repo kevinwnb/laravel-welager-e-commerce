@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -31,6 +32,12 @@ class LoginController extends Controller
 
         //$user = User::where('email', $request->emailphone)->where('phone', $request->emailphone);
         //$token = $user->createToken('authentication-token');
+
+        if (Session::has('cart_items')) {
+            $cart_controller = new CartController();
+            if (!$cart_controller->addSessionCartToAccount())
+                return Response::json(['message' => 'Binding session cart to account failed'], 404);
+        }
 
         return Response::json([
             'is_authenticated' => true

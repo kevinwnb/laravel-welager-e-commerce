@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Resources\Image as ImageResource;
+use Illuminate\Support\Facades\Response;
 
 class ImageController extends Controller
 {

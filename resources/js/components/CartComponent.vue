@@ -1,5 +1,11 @@
 <template>
   <div class="container my-3">
+    <!--Sign In Modal-->
+    <sign-in-modal-component
+      v-on:success="loadCheckOut()"
+    ></sign-in-modal-component>
+
+    <h5 class="mt-5">Shopping Cart</h5>
     <div class="row">
       <div class="col-md-9">
         <div
@@ -8,8 +14,12 @@
           v-for="item in cart_items"
           :key="item.id"
         >
-          <img style="width: auto; height: 150px" :src="item.image.path" />
-          <div class="align-self-start" style="flex-grow: 1">
+          <img
+            class="mx-3"
+            style="width: auto; height: 150px"
+            :src="images.filter((i) => i.product_id == item.product_id)[0].path"
+          />
+          <div class="align-self-start mx-3" style="flex-grow: 1">
             <h5 class="m-0">{{ item.name }}</h5>
             <p class="m-0">
               {{ item.price }}
@@ -43,12 +53,16 @@
       </div>
       <div class="col-md-3">
         <div class="p-3 border" style="height: 400px">
-          <h5>Subtotal:</h5>
+          <h5>Subtotal ({{ quantity }} items):</h5>
           <p>${{ formatMoney(subtotal) }}</p>
-          <h5>Total:</h5>
-          <p>${{ formatMoney(total) }}</p>
           <p class="text-success">3 day shipping</p>
-          <a class="btn btn-info d-block">Continue to Checkout</a>
+          <a
+            :data-toggle="authenticated ? '' : 'modal'"
+            v-bind:data-target="'#signInModal'"
+            href="/cart/checkout"
+            class="btn btn-info d-block"
+            >Continue to Checkout</a
+          >
         </div>
       </div>
     </div>
@@ -64,15 +78,27 @@ export default {
       quantity: 0,
       subtotal: 0.0,
       total: 0.0,
+      images: [],
+      authenticated: false,
     };
   },
   created() {
+    this.getImages();
     this.getCartItems();
   },
   mounted() {
     console.log("Component mounted.");
   },
   methods: {
+    getImages() {
+      fetch("api/products/images")
+        .then((res) => res.json())
+        .then((data) => (this.images = data.data));
+    },
+    loadCheckOut() {
+      // Simulate a mouse click:
+      window.location.href = "/cart/checkout";
+    },
     formatMoney: function (number, decPlaces, decSep, thouSep) {
       decPlaces = isNaN((decPlaces = Math.abs(decPlaces))) ? 2 : decPlaces;
       decSep = typeof decSep === "undefined" ? "." : decSep;
@@ -121,7 +147,7 @@ export default {
           }
           this.calculateSubtotal();
           this.calculateTotal();
-          //alert(JSON.stringify(this.cart_items));
+          //alert(JSON.stringify(this.cart_items, null, 2));
         });
     },
     changeItemQuantity: function (id, product_id, quantity) {
