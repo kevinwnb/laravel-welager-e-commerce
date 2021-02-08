@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h5 class="text-center my-5">{{ products.items.length }} Matches</h5>
     <div class="row">
       <div
         class="col-lg-3 col-md-6 p-0"

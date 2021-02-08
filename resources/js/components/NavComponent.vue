@@ -41,7 +41,7 @@
         <form @submit.prevent="searchShort()" class="form-inline w-100">
           <div class="input-group w-100 mx-auto" style="max-width: 600px">
             <input
-              v-model="search_string_short"
+              v-model="mutable_search_string"
               class="form-control"
               type="search"
               placeholder="Search"

@@ -3052,6 +3052,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4693,6 +4701,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -42155,7 +42164,7 @@ var render = function() {
     _c(
       "form",
       {
-        staticClass: "border p-2 my-5 bg-light",
+        staticClass: "border p-2 mt-5 bg-light",
         staticStyle: {
           "text-align": "initial",
           "min-width": "18rem",
@@ -42230,10 +42239,33 @@ var render = function() {
           attrs: { type: "submit", value: "Continue" }
         })
       ]
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticClass: "border p-3 my-3 d-inline-block text-initial",
+          staticStyle: { "min-width": "18rem" }
+        },
+        [
+          _vm._v("\n      New user? "),
+          _c("a", { attrs: { href: "register" } }, [
+            _vm._v("Create an Account")
+          ])
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -42287,8 +42319,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search_string_short,
-                        expression: "search_string_short"
+                        value: _vm.mutable_search_string,
+                        expression: "mutable_search_string"
                       }
                     ],
                     staticClass: "form-control",
@@ -42297,13 +42329,13 @@ var render = function() {
                       placeholder: "Search",
                       "aria-label": "Search"
                     },
-                    domProps: { value: _vm.search_string_short },
+                    domProps: { value: _vm.mutable_search_string },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search_string_short = $event.target.value
+                        _vm.mutable_search_string = $event.target.value
                       }
                     }
                   }),
@@ -44430,6 +44462,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("h5", { staticClass: "text-center my-5" }, [
+      _vm._v(_vm._s(_vm.products.items.length) + " Matches")
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },

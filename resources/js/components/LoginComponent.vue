@@ -2,7 +2,7 @@
   <div class="container text-center">
     <form
       @submit.prevent="handleLogin"
-      class="border p-2 my-5 bg-light"
+      class="border p-2 mt-5 bg-light"
       style="text-align: initial; min-width: 18rem; display: inline-block"
     >
       <h4 class="text-center mb-3">Login</h4>
@@ -27,6 +27,14 @@
       </div>
       <input type="submit" class="btn btn-info w-100 mt-3" value="Continue" />
     </form>
+    <div>
+      <div
+        class="border p-3 my-3 d-inline-block text-initial"
+        style="min-width: 18rem"
+      >
+        New user? <a href="register">Create an Account</a>
+      </div>
+    </div>
   </div>
 </template>
 
