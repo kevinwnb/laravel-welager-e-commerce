@@ -21,7 +21,7 @@
           />
           <div class="align-self-start mx-3" style="flex-grow: 1">
             <h5 class="m-0">{{ item.name }}</h5>
-            <p class="m-0">
+            <p class="my-3">
               {{ item.price }}
             </p>
             <select

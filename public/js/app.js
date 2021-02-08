@@ -41671,7 +41671,7 @@ var render = function() {
                         _vm._v(_vm._s(item.name))
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
+                      _c("p", { staticClass: "my-3" }, [
                         _vm._v(
                           "\n            " + _vm._s(item.price) + "\n          "
                         )
