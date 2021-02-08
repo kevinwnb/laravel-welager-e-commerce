@@ -4717,6 +4717,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["productsparam"],
   data: function data() {
@@ -44465,7 +44468,19 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(p.name))])
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-text",
+                    attrs: { href: "product/" + p.id }
+                  },
+                  [_vm._v(_vm._s(p.name))]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text mt-3" }, [
+                  _c("sup", [_vm._v("CAD$ ")]),
+                  _c("b", [_vm._v(_vm._s(p.price))])
+                ])
               ])
             ]
           )

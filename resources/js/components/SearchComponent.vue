@@ -14,7 +14,10 @@
             />
           </div>
           <div class="card-body">
-            <p class="card-text">{{ p.name }}</p>
+            <a :href="'product/' + p.id" class="card-text">{{ p.name }}</a>
+            <p class="card-text mt-3">
+              <sup>CAD$ </sup><b>{{ p.price }}</b>
+            </p>
           </div>
         </div>
       </div>
