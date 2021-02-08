@@ -72,6 +72,7 @@
       </div>
 
       <form
+        id="searchArea"
         @submit.prevent="search()"
         action="/search"
         class="form-inline justify-content-center"
@@ -134,10 +135,7 @@
               aria-label="Search"
               v-model="mutable_search_string"
               @keyup="autocomplete()"
-              @blur="
-                autocomplete_data = [];
-                toggleBodyOverflow();
-              "
+              @blur="clearAutocompleteBox()"
             />
             <div
               v-if="
@@ -149,7 +147,9 @@
               <a
                 v-for="(item, index) in autocomplete_data"
                 v-bind:key="index"
-                href="javascript:void(0)"
+                :href="
+                  'search/' + item.toLowerCase() + '/' + mutable_category_id
+                "
                 class="text-dark d-block my-1"
                 style="font-size: 1rem"
                 >{{ item.toLowerCase() }}</a
@@ -217,19 +217,6 @@
       <a href="javascript:void(0)">All</a>
     </div>
 
-    <div
-      v-if="
-        false && autocomplete_data !== undefined && autocomplete_data.length > 0
-      "
-      style="
-        z-index: 10;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-      "
-    ></div>
-
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
         >&times;</a
@@ -264,7 +251,8 @@
             >
             <p class="text-muted text-center my-3">or</p>
             <a
-              href="javascript:void(0)"
+              v-if="!is_authenticated"
+              href="register"
               class="d-flex justify-content-center p-2 ml-3 mt-2 mr-3"
               style="border: 2px solid black"
               >Create Account</a
@@ -334,12 +322,11 @@ export default {
     // }
   },
   methods: {
-    _toggleBodyOverflow() {
-      if (this.autocomplete_data.length > 0) {
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      } else {
-        document.getElementsByTagName("body")[0].style.overflow = "visible";
-      }
+    clearAutocompleteBox() {
+      window.addEventListener("mouseup", (e) => {
+        if (!document.querySelector("#searchArea").contains(e.target))
+          this.autocomplete_data = [];
+      });
     },
     autocomplete() {
       fetch(

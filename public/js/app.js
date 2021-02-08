@@ -3365,18 +3365,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3432,15 +3420,15 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
-    _toggleBodyOverflow: function _toggleBodyOverflow() {
-      if (this.autocomplete_data.length > 0) {
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      } else {
-        document.getElementsByTagName("body")[0].style.overflow = "visible";
-      }
+    clearAutocompleteBox: function clearAutocompleteBox() {
+      var _this3 = this;
+
+      window.addEventListener("mouseup", function (e) {
+        if (!document.querySelector("#searchArea").contains(e.target)) _this3.autocomplete_data = [];
+      });
     },
     autocomplete: function autocomplete() {
-      var _this3 = this;
+      var _this4 = this;
 
       fetch("api/autocomplete/" + this.mutable_search_string + "/" + this.mutable_category_id).then(function (res) {
         return res.json();
@@ -3449,30 +3437,30 @@ __webpack_require__.r(__webpack_exports__);
         data.items.forEach(function (item) {
           keywords += ", " + item.keywords;
         });
-        _this3.autocomplete_data = keywords.split(", ").filter(function (k) {
-          return k.startsWith(_this3.mutable_search_string);
+        _this4.autocomplete_data = keywords.split(", ").filter(function (k) {
+          return k.startsWith(_this4.mutable_search_string);
         }).map(function (k) {
           return k.trim();
         }).slice(0, 10);
 
-        _this3.toggleBodyOverflow(); //alert(JSON.stringify(this.autocomplete_data, null, 2));
+        _this4.toggleBodyOverflow(); //alert(JSON.stringify(this.autocomplete_data, null, 2));
 
       });
     },
     checkLogin: function checkLogin() {
-      var _this4 = this;
+      var _this5 = this;
 
       fetch("/api/login/check").then(function (res) {
         return res.json();
       }).then(function (data) {
-        _this4.is_authenticated = data.is_authenticated;
-        _this4.user = data.user;
+        _this5.is_authenticated = data.is_authenticated;
+        _this5.user = data.user;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getCartItems: function getCartItems() {
-      var _this5 = this;
+      var _this6 = this;
 
       fetch("/api/cart/items").then(function (res) {
         return res.json();
@@ -3485,7 +3473,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
 
-        _this5.cart_item_quantity = quantity;
+        _this6.cart_item_quantity = quantity;
       });
     },
     search: function search() {
@@ -3507,7 +3495,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     sidenavNextMenu: function sidenavNextMenu(e) {
-      var _this6 = this;
+      var _this7 = this;
 
       var newMenu = document.createElement("div");
       var goBack = document.createElement("a");
@@ -3518,7 +3506,7 @@ __webpack_require__.r(__webpack_exports__);
       goBackArrow.classList.add("fa-arrow-left");
       goBack.prepend(goBackArrow, " Go Back");
       goBack.addEventListener("click", function (e) {
-        _this6.goBack(e);
+        _this7.goBack(e);
       });
       newMenu.appendChild(goBack);
       var newMenuItem;
@@ -42337,7 +42325,7 @@ var render = function() {
           {
             staticClass: "form-inline justify-content-center",
             staticStyle: { "flex-grow": "1" },
-            attrs: { action: "/search" },
+            attrs: { id: "searchArea", action: "/search" },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -42486,8 +42474,7 @@ var render = function() {
                           return _vm.autocomplete()
                         },
                         blur: function($event) {
-                          _vm.autocomplete_data = []
-                          _vm.toggleBodyOverflow()
+                          return _vm.clearAutocompleteBox()
                         },
                         input: function($event) {
                           if ($event.target.composing) {
@@ -42518,7 +42505,13 @@ var render = function() {
                                 key: index,
                                 staticClass: "text-dark d-block my-1",
                                 staticStyle: { "font-size": "1rem" },
-                                attrs: { href: "javascript:void(0)" }
+                                attrs: {
+                                  href:
+                                    "search/" +
+                                    item.toLowerCase() +
+                                    "/" +
+                                    _vm.mutable_category_id
+                                }
                               },
                               [_vm._v(_vm._s(item.toLowerCase()))]
                             )
@@ -42608,10 +42601,6 @@ var render = function() {
     _vm._v(" "),
     _vm._m(7),
     _vm._v(" "),
-     false
-      ? undefined
-      : _vm._e(),
-    _vm._v(" "),
     _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [
       _c(
         "a",
@@ -42698,16 +42687,18 @@ var render = function() {
                   _vm._v("or")
                 ]),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "d-flex justify-content-center p-2 ml-3 mt-2 mr-3",
-                    staticStyle: { border: "2px solid black" },
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("Create Account")]
-                )
+                !_vm.is_authenticated
+                  ? _c(
+                      "a",
+                      {
+                        staticClass:
+                          "d-flex justify-content-center p-2 ml-3 mt-2 mr-3",
+                        staticStyle: { border: "2px solid black" },
+                        attrs: { href: "register" }
+                      },
+                      [_vm._v("Create Account")]
+                    )
+                  : _vm._e()
               ])
             ],
             2
