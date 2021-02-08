@@ -45,7 +45,7 @@
         :key="key"
         class="d-flex align-items-center w-100 my-2"
       >
-        <p style="white-space: nowrap; margin: 0 5px">{{ key }} star</p>
+        <p style="white-space: nowrap" class="m-0 mr-2">{{ key }} star</p>
         <div
           class="rounded"
           style="
@@ -65,7 +65,7 @@
             }"
           ></div>
         </div>
-        <p style="width: 4rem; text-align: right; margin: 0">
+        <p style="width: 5rem; text-align: right" class="m-0">
           {{ stars_percentages[key] }}%
         </p>
       </div>

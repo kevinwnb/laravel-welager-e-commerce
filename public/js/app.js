@@ -44243,7 +44243,10 @@ var render = function() {
           [
             _c(
               "p",
-              { staticStyle: { "white-space": "nowrap", margin: "0 5px" } },
+              {
+                staticClass: "m-0 mr-2",
+                staticStyle: { "white-space": "nowrap" }
+              },
               [_vm._v(_vm._s(key) + " star")]
             ),
             _vm._v(" "),
@@ -44275,11 +44278,8 @@ var render = function() {
             _c(
               "p",
               {
-                staticStyle: {
-                  width: "4rem",
-                  "text-align": "right",
-                  margin: "0"
-                }
+                staticClass: "m-0",
+                staticStyle: { width: "5rem", "text-align": "right" }
               },
               [
                 _vm._v(
