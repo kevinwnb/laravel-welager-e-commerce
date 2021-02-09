@@ -215,10 +215,10 @@
 
     <div class="subnav">
       <a
-        href="javascript:void(0)"
         class="d-inline-block m-1 p-1 rounded"
         v-for="c in categories.filter((c) => c.parent_id == null)"
         :key="'subnav' + c.id"
+        :href="'browse/' + c.id"
         >{{ c.name }}</a
       >
     </div>

@@ -42654,7 +42654,7 @@ var render = function() {
             {
               key: "subnav" + c.id,
               staticClass: "d-inline-block m-1 p-1 rounded",
-              attrs: { href: "javascript:void(0)" }
+              attrs: { href: "browse/" + c.id }
             },
             [_vm._v(_vm._s(c.name))]
           )
