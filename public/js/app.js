@@ -3373,6 +3373,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3384,7 +3390,8 @@ __webpack_require__.r(__webpack_exports__);
       mutable_category_id: 0,
       search_string_short: "",
       mutable_search_string: this.search_string,
-      autocomplete_data: []
+      autocomplete_data: [],
+      pos: {}
     };
   },
   created: function created() {
@@ -42634,7 +42641,27 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(7),
+    _c(
+      "div",
+      { staticClass: "subnav" },
+      _vm._l(
+        _vm.categories.filter(function(c) {
+          return c.parent_id == null
+        }),
+        function(c) {
+          return _c(
+            "a",
+            {
+              key: "subnav" + c.id,
+              staticClass: "d-inline-block m-1 p-1 rounded",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [_vm._v(_vm._s(c.name))]
+          )
+        }
+      ),
+      0
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [
       _c(
@@ -42876,14 +42903,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("a", { attrs: { href: "/register" } }, [_vm._v("Create Account")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "subnav" }, [
-      _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("All")])
     ])
   }
 ]

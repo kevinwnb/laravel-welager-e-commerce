@@ -15,6 +15,7 @@
     <link rel="icon" href="{{ URL::asset('/assets/images/favicon.png') }}" type="image/x-icon" />
 
     <script src="/assets/js/sidenav.js"></script>
+    <script src="/assets/js/subnav.js" defer></script>
     @yield('head-content')
 </head>
 

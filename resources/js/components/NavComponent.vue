@@ -214,7 +214,13 @@
     </nav>
 
     <div class="subnav">
-      <a href="javascript:void(0)">All</a>
+      <a
+        href="javascript:void(0)"
+        class="d-inline-block m-1 p-1 rounded"
+        v-for="c in categories.filter((c) => c.parent_id == null)"
+        :key="'subnav' + c.id"
+        >{{ c.name }}</a
+      >
     </div>
 
     <div id="mySidenav" class="sidenav">
@@ -277,6 +283,7 @@ export default {
       search_string_short: "",
       mutable_search_string: this.search_string,
       autocomplete_data: [],
+      pos: {},
     };
   },
   created() {
