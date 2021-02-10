@@ -350,7 +350,9 @@ export default {
           });
           this.autocomplete_data = keywords
             .split(", ")
-            .filter((k) => k.startsWith(this.mutable_search_string))
+            .filter((k) =>
+              k.startsWith(this.mutable_search_string.toLowerCase())
+            )
             .map((k) => k.trim())
             .slice(0, 10);
           this.toggleBodyOverflow();

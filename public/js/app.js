@@ -3453,7 +3453,7 @@ __webpack_require__.r(__webpack_exports__);
           keywords += ", " + item.keywords;
         });
         _this4.autocomplete_data = keywords.split(", ").filter(function (k) {
-          return k.startsWith(_this4.mutable_search_string);
+          return k.startsWith(_this4.mutable_search_string.toLowerCase());
         }).map(function (k) {
           return k.trim();
         }).slice(0, 10);
