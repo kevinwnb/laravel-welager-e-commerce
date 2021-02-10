@@ -3410,6 +3410,9 @@ __webpack_require__.r(__webpack_exports__);
       console.log(error);
     });
     this.getCartItems();
+    window.addEventListener("mouseup", function (e) {
+      if (!document.querySelector("#searchArea").contains(e.target)) _this.autocomplete_data = [];
+    });
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -3435,15 +3438,9 @@ __webpack_require__.r(__webpack_exports__);
     // }
   },
   methods: {
-    clearAutocompleteBox: function clearAutocompleteBox() {
-      var _this3 = this;
-
-      window.addEventListener("mouseup", function (e) {
-        if (!document.querySelector("#searchArea").contains(e.target)) _this3.autocomplete_data = [];
-      });
-    },
+    clearAutocompleteBox: function clearAutocompleteBox() {},
     autocomplete: function autocomplete() {
-      var _this4 = this;
+      var _this3 = this;
 
       fetch("api/autocomplete/" + this.mutable_search_string + "/" + this.mutable_category_id).then(function (res) {
         return res.json();
@@ -3452,30 +3449,30 @@ __webpack_require__.r(__webpack_exports__);
         data.items.forEach(function (item) {
           keywords += ", " + item.keywords;
         });
-        _this4.autocomplete_data = keywords.split(", ").filter(function (k) {
-          return k.startsWith(_this4.mutable_search_string.toLowerCase());
+        _this3.autocomplete_data = keywords.split(", ").filter(function (k) {
+          return k.startsWith(_this3.mutable_search_string.toLowerCase());
         }).map(function (k) {
           return k.trim();
         }).slice(0, 10);
 
-        _this4.toggleBodyOverflow(); //alert(JSON.stringify(this.autocomplete_data, null, 2));
+        _this3.toggleBodyOverflow(); //alert(JSON.stringify(this.autocomplete_data, null, 2));
 
       });
     },
     checkLogin: function checkLogin() {
-      var _this5 = this;
+      var _this4 = this;
 
       fetch("/api/login/check").then(function (res) {
         return res.json();
       }).then(function (data) {
-        _this5.is_authenticated = data.is_authenticated;
-        _this5.user = data.user;
+        _this4.is_authenticated = data.is_authenticated;
+        _this4.user = data.user;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getCartItems: function getCartItems() {
-      var _this6 = this;
+      var _this5 = this;
 
       fetch("/api/cart/items").then(function (res) {
         return res.json();
@@ -3488,7 +3485,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
 
-        _this6.cart_item_quantity = quantity;
+        _this5.cart_item_quantity = quantity;
       });
     },
     search: function search() {
@@ -3510,7 +3507,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     sidenavNextMenu: function sidenavNextMenu(e) {
-      var _this7 = this;
+      var _this6 = this;
 
       var newMenu = document.createElement("div");
       var goBack = document.createElement("a");
@@ -3521,7 +3518,7 @@ __webpack_require__.r(__webpack_exports__);
       goBackArrow.classList.add("fa-arrow-left");
       goBack.prepend(goBackArrow, " Go Back");
       goBack.addEventListener("click", function (e) {
-        _this7.goBack(e);
+        _this6.goBack(e);
       });
       newMenu.appendChild(goBack);
       var newMenuItem;

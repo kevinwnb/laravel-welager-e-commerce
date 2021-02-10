@@ -304,6 +304,11 @@ export default {
       });
 
     this.getCartItems();
+
+    window.addEventListener("mouseup", (e) => {
+      if (!document.querySelector("#searchArea").contains(e.target))
+        this.autocomplete_data = [];
+    });
   },
   mounted() {
     this.$root.$on("addQuantityToCart", (data) => {
@@ -329,12 +334,7 @@ export default {
     // }
   },
   methods: {
-    clearAutocompleteBox() {
-      window.addEventListener("mouseup", (e) => {
-        if (!document.querySelector("#searchArea").contains(e.target))
-          this.autocomplete_data = [];
-      });
-    },
+    clearAutocompleteBox() {},
     autocomplete() {
       fetch(
         "api/autocomplete/" +
