@@ -53,7 +53,7 @@
       v-on:success="loadBuyNow()"
     ></sign-in-modal-component>
 
-    <div class="m-3">
+    <div class="m-3 mt-5">
       <div class="row">
         <div class="col-md-4">
           <div style="position: sticky; top: 1rem">

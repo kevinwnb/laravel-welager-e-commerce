@@ -43388,7 +43388,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "m-3" }, [
+      _c("div", { staticClass: "m-3 mt-5" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-4" }, [
             _c("div", { staticStyle: { position: "sticky", top: "1rem" } }, [
