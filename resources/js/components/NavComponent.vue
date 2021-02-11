@@ -12,7 +12,9 @@
             ></a>
           </li>
           <li class="nav-item">
-            <a class="navbar-brand ml-2" href="/">Wetech</a>
+            <a class="navbar-brand ml-2" href="/"
+              ><img src="assets/images/logo.png" style="max-width: 80px"
+            /></a>
           </li>
         </div>
 
@@ -67,7 +69,9 @@
           ></a>
         </li>
         <li class="nav-item">
-          <a class="navbar-brand ml-2" href="/">Wetech</a>
+          <a class="navbar-brand ml-2" href="/"
+            ><img src="assets/images/logo.png" style="max-width: 80px"
+          /></a>
         </li>
       </div>
 

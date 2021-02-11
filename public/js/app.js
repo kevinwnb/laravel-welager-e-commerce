@@ -3379,6 +3379,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -4766,6 +4770,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42787,7 +42797,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", { staticClass: "nav-item" }, [
           _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
-            _vm._v("Wetech")
+            _c("img", {
+              staticStyle: { "max-width": "80px" },
+              attrs: { src: "assets/images/logo.png" }
+            })
           ])
         ])
       ]),
@@ -42852,7 +42865,10 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("li", { staticClass: "nav-item" }, [
         _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
-          _vm._v("Wetech")
+          _c("img", {
+            staticStyle: { "max-width": "80px" },
+            attrs: { src: "assets/images/logo.png" }
+          })
         ])
       ])
     ])
@@ -44667,19 +44683,23 @@ var render = function() {
                     [_vm._v("\n            Sign In\n          ")]
                   ),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                    _vm._v("Forgot password?")
-                  ])
+                  _c(
+                    "a",
+                    {
+                      staticClass: "mt-2 d-inline-block",
+                      attrs: { href: "javascript:void(0)" }
+                    },
+                    [_vm._v("Forgot password?")]
+                  )
                 ]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "text-center mt-3" }, [
-                _c("p", [_vm._v("or")]),
-                _vm._v(" "),
                 _c(
                   "a",
                   {
-                    attrs: { href: "javascript:void(0)" },
+                    staticClass: "btn btn-outline-info d-block",
+                    attrs: { href: "register" },
                     on: {
                       click: function($event) {
                         return _vm.emit()

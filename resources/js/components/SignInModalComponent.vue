@@ -53,11 +53,17 @@
             <button type="submit" class="btn btn-info w-100 mt-2">
               Sign In
             </button>
-            <a href="javascript:void(0)">Forgot password?</a>
+            <a href="javascript:void(0)" class="mt-2 d-inline-block"
+              >Forgot password?</a
+            >
           </form>
           <div class="text-center mt-3">
-            <p>or</p>
-            <a href="javascript:void(0)" @click="emit()">Create Account</a>
+            <a
+              href="register"
+              class="btn btn-outline-info d-block"
+              @click="emit()"
+              >Create Account</a
+            >
           </div>
         </div>
       </div>
