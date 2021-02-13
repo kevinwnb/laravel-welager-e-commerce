@@ -3383,6 +3383,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -3415,7 +3444,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.getCartItems();
     window.addEventListener("mouseup", function (e) {
-      if (!document.querySelector("#searchArea").contains(e.target)) _this.autocomplete_data = [];
+      if (!document.querySelector("#searchArea").contains(e.target) && !document.querySelector("#searchAreaSmall").contains(e.target)) _this.autocomplete_data = [];
     });
   },
   mounted: function mounted() {
@@ -42328,31 +42357,85 @@ var render = function() {
                   staticStyle: { "max-width": "600px" }
                 },
                 [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.mutable_search_string,
-                        expression: "mutable_search_string"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "search",
-                      placeholder: "Search",
-                      "aria-label": "Search"
+                  _c(
+                    "div",
+                    {
+                      staticClass: "position-relative flex-grow-1",
+                      attrs: { id: "searchAreaSmall" }
                     },
-                    domProps: { value: _vm.mutable_search_string },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.mutable_search_string,
+                            expression: "mutable_search_string"
+                          }
+                        ],
+                        staticClass: "form-control w-100",
+                        staticStyle: {
+                          "border-top-right-radius": "0",
+                          "border-bottom-right-radius": "0"
+                        },
+                        attrs: {
+                          type: "search",
+                          placeholder: "Search",
+                          "aria-label": "Search"
+                        },
+                        domProps: { value: _vm.mutable_search_string },
+                        on: {
+                          keyup: function($event) {
+                            return _vm.autocomplete()
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.mutable_search_string = $event.target.value
+                          }
                         }
-                        _vm.mutable_search_string = $event.target.value
-                      }
-                    }
-                  }),
+                      }),
+                      _vm._v(" "),
+                      _vm.autocomplete_data !== undefined &&
+                      _vm.autocomplete_data.length > 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "w-100 p-3 position-absolute border shadow",
+                              staticStyle: {
+                                "background-color": "white",
+                                top: "100%",
+                                "z-index": "11"
+                              }
+                            },
+                            _vm._l(_vm.autocomplete_data, function(
+                              item,
+                              index
+                            ) {
+                              return _c(
+                                "a",
+                                {
+                                  key: index,
+                                  staticClass: "text-dark d-block my-1",
+                                  staticStyle: { "font-size": "1rem" },
+                                  attrs: {
+                                    href:
+                                      "search/" +
+                                      item.toLowerCase() +
+                                      "/" +
+                                      _vm.mutable_category_id
+                                  }
+                                },
+                                [_vm._v(_vm._s(item.toLowerCase()))]
+                              )
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ]
+                  ),
                   _vm._v(" "),
                   _vm._m(1)
                 ]
@@ -42841,10 +42924,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-append" }, [
-      _c("button", { staticClass: "btn btn-info", attrs: { type: "submit" } }, [
-        _c("i", { staticClass: "fas fa-search" }),
-        _vm._v(" Search\n            ")
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info",
+          staticStyle: { "white-space": "nowrap" },
+          attrs: { type: "submit" }
+        },
+        [
+          _c("i", { staticClass: "fas fa-search" }),
+          _vm._v(" Search\n            ")
+        ]
+      )
     ])
   },
   function() {

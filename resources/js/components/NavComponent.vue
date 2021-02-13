@@ -42,16 +42,45 @@
         <!--search box-->
         <form @submit.prevent="searchShort()" class="form-inline w-100">
           <div class="input-group w-100 mx-auto" style="max-width: 600px">
-            <input
-              v-model="mutable_search_string"
-              class="form-control"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-
+            <div id="searchAreaSmall" class="position-relative flex-grow-1">
+              <input
+                v-model="mutable_search_string"
+                class="form-control w-100"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                style="
+                  border-top-right-radius: 0;
+                  border-bottom-right-radius: 0;
+                "
+                @keyup="autocomplete()"
+              />
+              <div
+                v-if="
+                  autocomplete_data !== undefined &&
+                  autocomplete_data.length > 0
+                "
+                class="w-100 p-3 position-absolute border shadow"
+                style="background-color: white; top: 100%; z-index: 11"
+              >
+                <a
+                  v-for="(item, index) in autocomplete_data"
+                  v-bind:key="index"
+                  :href="
+                    'search/' + item.toLowerCase() + '/' + mutable_category_id
+                  "
+                  class="text-dark d-block my-1"
+                  style="font-size: 1rem"
+                  >{{ item.toLowerCase() }}</a
+                >
+              </div>
+            </div>
             <div class="input-group-append">
-              <button class="btn btn-info" type="submit">
+              <button
+                class="btn btn-info"
+                style="white-space: nowrap"
+                type="submit"
+              >
                 <i class="fas fa-search"></i> Search
               </button>
             </div>
@@ -310,7 +339,10 @@ export default {
     this.getCartItems();
 
     window.addEventListener("mouseup", (e) => {
-      if (!document.querySelector("#searchArea").contains(e.target))
+      if (
+        !document.querySelector("#searchArea").contains(e.target) &&
+        !document.querySelector("#searchAreaSmall").contains(e.target)
+      )
         this.autocomplete_data = [];
     });
   },
