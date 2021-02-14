@@ -3412,6 +3412,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["search_string", "category_id"],
   data: function data() {
@@ -42332,7 +42341,33 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { attrs: { id: "short" } }, [
-      _vm._m(0),
+      _c("nav", { staticClass: "navbar navbar-dark bg-dark" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex align-items-center" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("li", { staticClass: "nav-item" }, [
+            _c("a", { staticClass: "nav-link", attrs: { href: "cart" } }, [
+              _c("i", { staticClass: "fas fa-shopping-cart" }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticStyle: {
+                    "font-size": "1rem",
+                    "font-weight": "bold",
+                    "background-color": "#17a2b8",
+                    "border-radius": "100px",
+                    padding: "2px"
+                  }
+                },
+                [_vm._v(_vm._s(_vm.cart_item_quantity))]
+              )
+            ])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "nav",
@@ -42437,7 +42472,7 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(2)
                 ]
               )
             ]
@@ -42450,7 +42485,7 @@ var render = function() {
       "nav",
       { staticClass: "navbar navbar-dark bg-dark", attrs: { id: "wide" } },
       [
-        _vm._m(2),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "form",
@@ -42654,7 +42689,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(4)
               ]
             )
           ]
@@ -42664,12 +42699,12 @@ var render = function() {
           "li",
           { staticClass: "nav-item", staticStyle: { position: "relative" } },
           [
-            _vm._m(4),
+            _vm._m(5),
             _vm._v(" "),
             _c("div", { staticClass: "dropdown-nav shadow" }, [
               !_vm.is_authenticated
                 ? _c("div", [
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c(
                       "p",
@@ -42685,7 +42720,7 @@ var render = function() {
                       [_vm._v("\n            or\n          ")]
                     ),
                     _vm._v(" "),
-                    _vm._m(6)
+                    _vm._m(7)
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -42865,57 +42900,41 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "navbar navbar-dark bg-dark" }, [
-      _c("div", { staticClass: "d-flex align-items-center" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "javascript:void(0)", onclick: "openNav()" }
-            },
-            [_c("i", { staticClass: "fas fa-bars" })]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
-            _c("img", {
-              staticStyle: { "max-width": "80px" },
-              attrs: { src: "assets/images/logo.png" }
-            })
-          ])
-        ])
+    return _c("div", { staticClass: "d-flex align-items-center" }, [
+      _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: { href: "javascript:void(0)", onclick: "openNav()" }
+          },
+          [_c("i", { staticClass: "fas fa-bars" })]
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "d-flex align-items-center" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "/login" } }, [
-            _c("i", { staticClass: "fas fa-user" }),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticStyle: { "font-size": "1rem", "font-weight": "bold" } },
-              [_vm._v("Account")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            { staticClass: "nav-link", attrs: { href: "javascript:void(0)" } },
-            [
-              _c("i", { staticClass: "fas fa-shopping-cart" }),
-              _vm._v(" "),
-              _c(
-                "span",
-                { staticStyle: { "font-size": "1rem", "font-weight": "bold" } },
-                [_vm._v("Cart")]
-              )
-            ]
-          )
+      _c("li", { staticClass: "nav-item" }, [
+        _c("a", { staticClass: "navbar-brand ml-2", attrs: { href: "/" } }, [
+          _c("img", {
+            staticStyle: { "max-width": "80px" },
+            attrs: { src: "assets/images/logo.png" }
+          })
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "/login" } }, [
+        _c("i", { staticClass: "fas fa-user" }),
+        _vm._v(" "),
+        _c(
+          "span",
+          { staticStyle: { "font-size": "1rem", "font-weight": "bold" } },
+          [_vm._v("Account")]
+        )
       ])
     ])
   },

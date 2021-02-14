@@ -29,9 +29,18 @@
 
           <!--cart-->
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link"
+            <a href="cart" class="nav-link"
               ><i class="fas fa-shopping-cart"></i>
-              <span style="font-size: 1rem; font-weight: bold">Cart</span></a
+              <span
+                style="
+                  font-size: 1rem;
+                  font-weight: bold;
+                  background-color: #17a2b8;
+                  border-radius: 100px;
+                  padding: 2px;
+                "
+                >{{ cart_item_quantity }}</span
+              ></a
             >
           </li>
         </div>
