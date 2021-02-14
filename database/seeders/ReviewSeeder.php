@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class ReviewSeeder extends Seeder
 {
@@ -38,6 +39,8 @@ class ReviewSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
+
         for ($p = 1; $p <= 12; $p++) {
             for ($n = 1; $n <= 100; $n++) {
                 $stars = $this->getRandomWeightedElement([1 => 10, 2 => 5, 3 => 7, 4 => 9, 5 => 69]);
@@ -46,7 +49,7 @@ class ReviewSeeder extends Seeder
                     'product_id' => $p,
                     'user_id' => $n,
                     'title' => ($stars < 3 ? 'Bad product' : '') . ($stars == 3 ? 'Acceptable product' : '') . ($stars > 3 ? 'Great product' : ''),
-                    'review' => file_get_contents('http://loripsum.net/api/1/plaintext'),
+                    'review' => $faker->text($maxNbChars = 200),
                     'stars' => $stars,
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s')
