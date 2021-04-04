@@ -2266,6 +2266,7 @@ __webpack_require__.r(__webpack_exports__);
       //quantity: 0,
       subtotal: 0.0,
       total: 0.0,
+      hst: 0.0,
       payment_method: {},
       address: {}
     };
@@ -2275,6 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getDefaultPaymentMethod();
     this.getDefaultAddress();
     this.calculateSubtotal();
+    this.calculateHst();
     this.calculateTotal();
   },
   mounted: function mounted() {
@@ -2332,6 +2334,9 @@ __webpack_require__.r(__webpack_exports__);
       var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
       var j = (j = i.length) > 3 ? j % 3 : 0;
       return sign + (j ? i.substr(0, j) + thouSep : "") + i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) + (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+    },
+    calculateHst: function calculateHst() {
+      this.hst = this.subtotal * 0.15;
     },
     calculateSubtotal: function calculateSubtotal() {
       this.subtotal = Math.round((parseFloat(this.product.price) * parseInt(this.product.quantity) + Number.EPSILON) * 100) / 100;
@@ -41481,12 +41486,20 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _c("tr", [
+                    _c("td", [_vm._v("GST/HST:")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-right" }, [
+                      _vm._v("CAD$ " + _vm._s(_vm.formatMoney(_vm.hst)))
+                    ])
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("h5", { staticClass: "mt-3" }, [_vm._v("Total:")]),
                 _vm._v(" "),
-                _c("p", [_vm._v("CAD$ " + _vm._s(_vm.formatMoney(_vm.total)))]),
+                _c("p", [
+                  _vm._v("CAD$ " + _vm._s(_vm.formatMoney(_vm.total + 5.0)))
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -41518,17 +41531,7 @@ var staticRenderFns = [
     return _c("tr", [
       _c("td", [_vm._v("Shipping:")]),
       _vm._v(" "),
-      _c("td", { staticClass: "text-right" }, [_vm._v("CAD$ 0.00")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("GST/HST:")]),
-      _vm._v(" "),
-      _c("td", { staticClass: "text-right" }, [_vm._v("CAD$ 0.00")])
+      _c("td", { staticClass: "text-right" }, [_vm._v("CAD$ 5.00")])
     ])
   }
 ]

@@ -84,7 +84,7 @@
               </tr>
               <tr>
                 <td>Shipping:</td>
-                <td class="text-right">CAD$ 0.00</td>
+                <td class="text-right">CAD$ 5.00</td>
               </tr>
               <tr>
                 <td>Subtotal:</td>
@@ -92,11 +92,11 @@
               </tr>
               <tr>
                 <td>GST/HST:</td>
-                <td class="text-right">CAD$ 0.00</td>
+                <td class="text-right">CAD$ {{ formatMoney(hst) }}</td>
               </tr>
             </table>
             <h5 class="mt-3">Total:</h5>
-            <p>CAD$ {{ formatMoney(total) }}</p>
+            <p>CAD$ {{ formatMoney(total + 5.0) }}</p>
             <a
               class="btn btn-success d-block"
               href="javascript:void(0)"
@@ -121,6 +121,7 @@ export default {
       //quantity: 0,
       subtotal: 0.0,
       total: 0.0,
+      hst: 0.0,
       payment_method: {},
       address: {},
     };
@@ -130,6 +131,7 @@ export default {
     this.getDefaultPaymentMethod();
     this.getDefaultAddress();
     this.calculateSubtotal();
+    this.calculateHst();
     this.calculateTotal();
   },
   mounted() {
@@ -196,6 +198,9 @@ export default {
               .slice(2)
           : "")
       );
+    },
+    calculateHst: function () {
+      this.hst = this.subtotal * 0.15;
     },
     calculateSubtotal: function () {
       this.subtotal =
